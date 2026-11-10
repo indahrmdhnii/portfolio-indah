@@ -48,10 +48,7 @@
       .will-change-opacity { will-change: opacity; }
       .gpu-accelerated { transform: translateZ(0); }
       /* Optimize repaints and reflows */
-      img, picture {
-        content-visibility: auto;
-        contain-intrinsic-size: 0 200px;
-      }
+      /* No content-visibility on images: iOS Safari skipped drawing images inside the 3D skills dome */
       /* Optimize animations - removed global transform-style that breaks fixed positioning */
     </style>
   </head>
