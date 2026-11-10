@@ -29,7 +29,7 @@ const Projects = () => {
   const [draggedStar, setDraggedStar] = useState<number | null>(null);
 
   // the special "drag me" star
-  const [specialStar, setSpecialStar] = useState<{ x: number; y: number }>({ x: 85, y: 8 });
+  const [specialStar, setSpecialStar] = useState<{ x: number; y: number }>(() => (window.innerWidth < 640 ? { x: 84, y: 1.2 } : { x: 85, y: 8 }));
   const [isDraggingSpecial, setIsDraggingSpecial] = useState(false);
 
   // carousel state
@@ -45,8 +45,24 @@ const Projects = () => {
 
   useEffect(() => {
     // spawn stars when component mounts or dark mode changes
-    const generatedStars = Array.from({ length: 30 }, (_, i) => {
+    const isPhone = window.innerWidth < 640;
+    const generatedStars = Array.from({ length: isPhone ? 14 : 30 }, (_, i) => {
       let x, y;
+
+      if (isPhone) {
+        // Phones: cards fill the width, so keep stars above the title, below the cards,
+        // and in the thin side gutters (left/right of the cards)
+        const zone = i % 4;
+        if (zone === 0) { x = Math.random() * 80 + 5; y = Math.random() * 4 + 0.5; }
+        else if (zone === 1) { x = Math.random() * 80 + 5; y = Math.random() * 3 + 96; }
+        else if (zone === 2) { x = Math.random() * 2; y = Math.random() * 80 + 10; }
+        else { x = Math.random() * 2 + 91; y = Math.random() * 80 + 10; }
+        return {
+          id: i, x, y,
+          image: (isDarkMode ? darkStars : lightStars)[Math.floor(Math.random() * (isDarkMode ? darkStars : lightStars).length)],
+          isDragging: false
+        };
+      }
 
       // Keep stars away from the title and cards area (roughly 20-80% horizontally, 15-85% vertically)
       const zone = i % 4;

@@ -327,7 +327,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid #C2607A !important; o
 .skills-dome { height: 600px; }
 @media (max-width: 640px) {
   .skills-dome { height: 340px; }
-  .draggable-star, .special-draggable-star { display: none !important; }
 }
 
 /* ---------- Splash screen ---------- */
@@ -1085,3 +1084,14 @@ img.hero-photo-heart { width: 50px; height: 50px; }
   .cs-3 { bottom: 4%; left: 4%; } .cs-4 { bottom: 5%; right: 4%; }
 }
 @media (prefers-reduced-motion: reduce) { .contact-sticker { animation: none; } }
+
+/* Draggable stars on touch screens: a finger drag moves the star, not the page */
+.draggable-star, .special-draggable-star { touch-action: none; -webkit-tap-highlight-color: transparent; }
+#projects { overflow-x: clip; }
+@media (max-width: 640px) {
+  .draggable-star { width: 34px !important; height: 34px !important; }
+  .special-draggable-star { width: 38px !important; height: 38px !important; }
+  .drag-me-hint { left: auto !important; right: 56px; top: 1% !important; }
+  .drag-me-hint img { width: 30px !important; height: 30px !important; margin-left: 0 !important; }
+  .drag-me-hint span { font-size: 18px !important; }
+}
