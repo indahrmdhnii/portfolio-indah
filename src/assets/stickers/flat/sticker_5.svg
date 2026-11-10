@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><path d="M60 34 C48 24 30 24 18 30 L18 92 C30 86 48 86 60 96 Z" fill="#FDD5DF"/>
+<path d="M60 34 C72 24 90 24 102 30 L102 92 C90 86 72 86 60 96 Z" fill="#FFF5F7"/>
+<path d="M60 34 L60 96" stroke="#C88B95" stroke-width="3" fill="none"/>
+<path d="M28 44 C36 41 44 41 51 45 M28 56 C36 53 44 53 51 57 M69 45 C76 41 84 41 92 44 M69 57 C76 53 84 53 92 56" stroke="#C88B95" stroke-width="3" fill="none"/></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><polygon points="60.0,16.0 71.8,45.8 103.7,47.8 79.0,68.2 87.0,99.2 60.0,82.0 33.0,99.2 41.0,68.2 16.3,47.8 48.2,45.8" fill="#F6C453"/></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>

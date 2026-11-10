@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><path d="M24 22 H96 A10 10 0 0 1 106 32 V70 A10 10 0 0 1 96 80 H58 L40 100 L42 80 H24 A10 10 0 0 1 14 70 V32 A10 10 0 0 1 24 22 Z" fill="#FFFFFF" />
+<path d="M24 22 H96 A10 10 0 0 1 106 32 V70 A10 10 0 0 1 96 80 H58 L40 100 L42 80 H24 A10 10 0 0 1 14 70 V32 A10 10 0 0 1 24 22 Z" fill="#FDD5DF" />
+<circle cx="40" cy="51" r="6" fill="#B8727C" /><circle cx="60" cy="51" r="6" fill="#B8727C" /><circle cx="80" cy="51" r="6" fill="#B8727C" /></g><g id="art3d" stroke-linejoin="round" stroke-linecap="round"><path d="M24 22 H96 A10 10 0 0 1 106 32 V70 A10 10 0 0 1 96 80 H58 L40 100 L42 80 H24 A10 10 0 0 1 14 70 V32 A10 10 0 0 1 24 22 Z" fill="#FFFFFF" filter="url(#clay)" /><path d="M24 22 H96 A10 10 0 0 1 106 32 V70 A10 10 0 0 1 96 80 H58 L40 100 L42 80 H24 A10 10 0 0 1 14 70 V32 A10 10 0 0 1 24 22 Z" fill="#FDD5DF" filter="url(#clay)" /><circle cx="40" cy="51" r="6" fill="#B8727C" filter="url(#clay)" /><circle cx="60" cy="51" r="6" fill="#B8727C" filter="url(#clay)" /><circle cx="80" cy="51" r="6" fill="#B8727C" filter="url(#clay)" /></g><filter id="clay" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceAlpha" stdDeviation="2.6" result="bump" />
+<feSpecularLighting in="bump" surfaceScale="5" specularConstant="0.9" specularExponent="38" lighting-color="#ffffff" result="spec"><feDistantLight azimuth="225" elevation="48" /></feSpecularLighting>
+<feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn" />
+<feOffset in="SourceAlpha" dx="-2.2" dy="-2.8" result="up" />
+<feComposite in="SourceAlpha" in2="up" operator="out" result="rim" />
+<feGaussianBlur in="rim" stdDeviation="1.6" result="rimBlur" />
+<feFlood flood-color="#3A1F2A" flood-opacity="0.38" />
+<feComposite in2="rimBlur" operator="in" result="shade0" />
+<feComposite in="shade0" in2="SourceAlpha" operator="in" result="shade" />
+<feComposite in="SourceGraphic" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.75" k4="0" result="lit" />
+<feMerge><feMergeNode in="lit" /><feMergeNode in="shade" /></feMerge>
+</filter>
+<filter id="lift" x="-25%" y="-25%" width="150%" height="160%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceAlpha" stdDeviation="3" result="b" />
+<feOffset in="b" dy="4" result="o" />
+<feFlood flood-color="#8B5A65" flood-opacity="0.35" />
+<feComposite in2="o" operator="in" result="drop" />
+<feSpecularLighting in="b" surfaceScale="3" specularConstant="0.5" specularExponent="12" lighting-color="#ffffff" result="s"><feDistantLight azimuth="225" elevation="55" /></feSpecularLighting>
+<feComposite in="s" in2="SourceAlpha" operator="in" result="sIn" />
+<feComposite in="SourceGraphic" in2="sIn" operator="arithmetic" k2="1" k3="0.4" result="lit" />
+<feMerge><feMergeNode in="drop" /><feMergeNode in="lit" /></feMerge>
+</filter></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12" filter="url(#lift)" />
+<use href="#art3d" />
+</svg>

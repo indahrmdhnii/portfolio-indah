@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><polygon points="62,12 96,50 62,88 34,50" fill="#8EC5C0"/>
+<polygon points="62,12 96,50 62,50" fill="#F6C453"/>
+<polygon points="34,50 62,50 62,88" fill="#C2607A"/>
+<path d="M62 88 C54 96 70 100 60 108" stroke="#8B5A65" stroke-width="3" fill="none"/>
+<polygon points="52,96 60,93 58,101" fill="#EABEC3"/></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>

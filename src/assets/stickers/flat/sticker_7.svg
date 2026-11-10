@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><path d="M60 100 C20 72 14 50 22 36 C30 22 50 22 60 38 C70 22 90 22 98 36 C106 50 100 72 60 100 Z" fill="#E87A9A"/>
+<path d="M36 40 C40 34 46 34 50 38" stroke="#FFD5E0" stroke-width="5" fill="none"/></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>

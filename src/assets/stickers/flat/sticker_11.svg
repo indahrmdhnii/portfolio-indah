@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><path d="M24 22 H96 A10 10 0 0 1 106 32 V70 A10 10 0 0 1 96 80 H58 L40 100 L42 80 H24 A10 10 0 0 1 14 70 V32 A10 10 0 0 1 24 22 Z" fill="#FFFFFF"/>
+<path d="M24 22 H96 A10 10 0 0 1 106 32 V70 A10 10 0 0 1 96 80 H58 L40 100 L42 80 H24 A10 10 0 0 1 14 70 V32 A10 10 0 0 1 24 22 Z" fill="#FDD5DF"/>
+<circle cx="40" cy="51" r="6" fill="#B8727C"/><circle cx="60" cy="51" r="6" fill="#B8727C"/><circle cx="80" cy="51" r="6" fill="#B8727C"/></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>

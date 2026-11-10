@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><rect x="22" y="24" width="76" height="72" rx="12" fill="#FFF5F7"/>
+<rect x="34" y="62" width="12" height="24" rx="3" fill="#EABEC3"/>
+<rect x="54" y="48" width="12" height="38" rx="3" fill="#D9A5AC"/>
+<rect x="74" y="34" width="12" height="52" rx="3" fill="#C2607A"/></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>

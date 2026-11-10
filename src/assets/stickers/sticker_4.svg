@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><path d="M40 14 L58 14 L66 50 L48 50 Z" fill="#C2607A" />
+<path d="M80 14 L62 14 L54 50 L72 50 Z" fill="#EABEC3" />
+<circle cx="60" cy="72" r="30" fill="#F6C453" />
+<circle cx="60" cy="72" r="21" fill="#FFE08A" />
+<polygon points="60.0,59.0 63.2,67.6 72.4,68.0 65.2,73.7 67.6,82.5 60.0,77.5 52.4,82.5 54.8,73.7 47.6,68.0 56.8,67.6" fill="#E0A93B" /></g><g id="art3d" stroke-linejoin="round" stroke-linecap="round"><path d="M40 14 L58 14 L66 50 L48 50 Z" fill="#C2607A" filter="url(#clay)" /><path d="M80 14 L62 14 L54 50 L72 50 Z" fill="#EABEC3" filter="url(#clay)" /><circle cx="60" cy="72" r="30" fill="#F6C453" filter="url(#clay)" /><circle cx="60" cy="72" r="21" fill="#FFE08A" filter="url(#clay)" /><polygon points="60.0,59.0 63.2,67.6 72.4,68.0 65.2,73.7 67.6,82.5 60.0,77.5 52.4,82.5 54.8,73.7 47.6,68.0 56.8,67.6" fill="#E0A93B" filter="url(#clay)" /></g><filter id="clay" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceAlpha" stdDeviation="2.6" result="bump" />
+<feSpecularLighting in="bump" surfaceScale="5" specularConstant="0.9" specularExponent="38" lighting-color="#ffffff" result="spec"><feDistantLight azimuth="225" elevation="48" /></feSpecularLighting>
+<feComposite in="spec" in2="SourceAlpha" operator="in" result="specIn" />
+<feOffset in="SourceAlpha" dx="-2.2" dy="-2.8" result="up" />
+<feComposite in="SourceAlpha" in2="up" operator="out" result="rim" />
+<feGaussianBlur in="rim" stdDeviation="1.6" result="rimBlur" />
+<feFlood flood-color="#3A1F2A" flood-opacity="0.38" />
+<feComposite in2="rimBlur" operator="in" result="shade0" />
+<feComposite in="shade0" in2="SourceAlpha" operator="in" result="shade" />
+<feComposite in="SourceGraphic" in2="specIn" operator="arithmetic" k1="0" k2="1" k3="0.75" k4="0" result="lit" />
+<feMerge><feMergeNode in="lit" /><feMergeNode in="shade" /></feMerge>
+</filter>
+<filter id="lift" x="-25%" y="-25%" width="150%" height="160%" color-interpolation-filters="sRGB">
+<feGaussianBlur in="SourceAlpha" stdDeviation="3" result="b" />
+<feOffset in="b" dy="4" result="o" />
+<feFlood flood-color="#8B5A65" flood-opacity="0.35" />
+<feComposite in2="o" operator="in" result="drop" />
+<feSpecularLighting in="b" surfaceScale="3" specularConstant="0.5" specularExponent="12" lighting-color="#ffffff" result="s"><feDistantLight azimuth="225" elevation="55" /></feSpecularLighting>
+<feComposite in="s" in2="SourceAlpha" operator="in" result="sIn" />
+<feComposite in="SourceGraphic" in2="sIn" operator="arithmetic" k2="1" k3="0.4" result="lit" />
+<feMerge><feMergeNode in="drop" /><feMergeNode in="lit" /></feMerge>
+</filter></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12" filter="url(#lift)" />
+<use href="#art3d" />
+</svg>

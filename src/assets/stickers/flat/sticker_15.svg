@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs><g id="art" stroke-linejoin="round" stroke-linecap="round"><g transform="rotate(40 60 60)">
+<rect x="48" y="10" width="24" height="16" rx="5" fill="#E87A9A"/>
+<rect x="48" y="24" width="24" height="8" fill="#C9CED6"/>
+<rect x="48" y="32" width="24" height="52" fill="#F6C453"/>
+<rect x="56" y="32" width="8" height="52" fill="#FFD76A"/>
+<polygon points="48,84 72,84 60,108" fill="#F3D9B8"/>
+<polygon points="55,98 65,98 60,108" fill="#5B4A4E"/>
+</g></g></defs>
+<use href="#art" stroke="#ffffff" stroke-width="12"/>
+<use href="#art"/>
+</svg>
