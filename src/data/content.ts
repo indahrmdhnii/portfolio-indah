@@ -301,6 +301,7 @@ export const experiences: ExperienceItem[] = [
     location: { en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
     period: { en: 'Dec 2025 – Apr 2026', id: 'Des 2025 – Apr 2026' },
     track: 'program',
+    badge: { en: 'Selected for the Intermediate & Expert scholarship', id: 'Terpilih untuk beasiswa kelas Intermediate & Expert' },
     description: {
       en: [
         'Completed an intensive Flutter development program from beginner to expert level.',
