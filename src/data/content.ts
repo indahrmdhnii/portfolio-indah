@@ -531,7 +531,7 @@ export const intellectualProperty: IpItem[] = [
     kind: copyright, number: 'EC002026113559', date: { en: 'Jul 13, 2026', id: '13 Jul 2026' },
     url: 'https://hakcipta.dgip.go.id/legal/c/MDAxMzQ2MTEy',
   },
-  { title: 'Boteen: The Mascot of Writeen', kind: copyright },
+  { title: 'Boteen: The Mascot of Writeen', kind: copyright, number: 'HC20250900112' },
 ];
 
 // Publications: `sinta` = SINTA accreditation rank of the journal (shown as a highlighted badge).
