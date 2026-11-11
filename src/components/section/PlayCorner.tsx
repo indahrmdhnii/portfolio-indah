@@ -138,8 +138,21 @@ const PlayCorner = () => {
       <DraggableDaisy style={{ bottom: '10%', right: '7%' }} size={40} rotate={14} />
       <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
         <SectionTitle subtitle={t(play.subtitle)}>{t(play.title)}</SectionTitle>
-        <div className="play-grid">
+        <div className="play-grid play-grid-single">
           <DaisyPetals />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/** "Water the chart" on its own, placed near the top (after the stats strip) */
+export const GrowCorner = () => {
+  const { isDarkMode } = useDarkMode();
+  return (
+    <section id="grow" className={`grow-corner relative ${isDarkMode ? 'play-dark' : ''}`}>
+      <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
+        <div className="play-grid play-grid-single">
           <WaterTheChart />
         </div>
       </div>
