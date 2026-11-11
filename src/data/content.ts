@@ -710,6 +710,33 @@ export const highlights = {
 // Song in the floating daisy player (Spotify embed, music only)
 export const music = { title: 'daisy', artist: 'wave to earth', spotifyId: '18gHmYZHV9JHZ0VUpjYlFs' };
 
+// Play corner: two small games at the end of the page
+export const play = {
+  title: { en: 'Play Corner', id: 'Pojok Main' } as L,
+  subtitle: { en: 'Before you go, take a little break ♡', id: 'Sebelum pergi, istirahat sebentar yuk ♡' } as L,
+  again: { en: 'Play again', id: 'Main lagi' } as L,
+  petals: {
+    kicker: { en: 'loves me, loves me not', id: 'loves me, loves me not' } as L,
+    title: { en: 'Should we work together?', id: 'Kita kerja bareng, nggak?' } as L,
+    hint: { en: 'Pull a petal', id: 'Cabut satu kelopak' } as L,
+    left: { en: 'left', id: 'lagi' } as L,
+    pickLabel: { en: 'Pull petal', id: 'Cabut kelopak' } as L,
+    lines: {
+      en: ['hire her?', 'maybe...', 'collab?', 'coffee chat?', 'build together?', 'dream team?', 'partners?', 'almost...'],
+      id: ['rekrut dia?', 'mungkin...', 'kolaborasi?', 'ngopi bareng?', 'bangun bareng?', 'dream team?', 'jadi partner?', 'dikit lagi...'],
+    },
+    final: { en: "yes! let's work together 💌", id: 'iya! yuk kerja bareng 💌' } as L,
+    cta: { en: 'Say hi →', id: 'Sapa aku →' } as L,
+  },
+  chart: {
+    kicker: { en: 'water the chart', id: 'siram grafiknya' } as L,
+    title: { en: 'Help the numbers grow', id: 'Bantu angkanya tumbuh' } as L,
+    hint: { en: 'Tap the watering can', id: 'Ketuk tekonya' } as L,
+    waterLabel: { en: 'Water the chart', id: 'Siram grafiknya' } as L,
+    win: { en: 'Analyze like a skeptic, build like a believer ♡', id: 'Menganalisis dengan kritis, membangun dengan yakin ♡' } as L,
+  },
+};
+
 export const ui = {
   nav: {
     about: { en: 'About', id: 'Tentang' },

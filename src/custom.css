@@ -1197,3 +1197,96 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .fonts-loading .splash-name,
 .fonts-loading .splash-skip,
 .fonts-loading .hero-photo .polaroid-caption { visibility: hidden; }
+
+/* ---------- Play corner ---------- */
+.play-corner { padding: 4rem 0 5rem; background: linear-gradient(180deg, #FFF5F7 0%, #FEF8FA 60%, #FFF5F7 100%); }
+.play-dark { background: #4E3945; }
+.play-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; max-width: 56rem; margin: 2rem auto 0; }
+.play-card {
+  position: relative; padding: 1.5rem 1.25rem 1.25rem; border-radius: 22px; text-align: center;
+  background: #FFFDFB; border: 1.5px solid rgba(234, 190, 195, 0.6); box-shadow: 0 6px 0 rgba(234, 190, 195, 0.45), 0 16px 30px rgba(139, 90, 101, 0.1);
+}
+.play-dark .play-card { background: #624A57; border-color: rgba(253, 213, 223, 0.25); box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15); }
+.play-kicker { font-family: 'Covered By Your Grace', 'Caveat', cursive; font-size: 1.15rem; color: #C2607A; line-height: 1; }
+.play-title { font-weight: 800; font-size: 1.2rem; color: #6B4C57; margin-top: 0.25rem; }
+.play-dark .play-title { color: #fff; }
+.play-dark .play-kicker { color: #FDD5DF; }
+.play-actions { min-height: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 0.75rem; }
+.play-hint { font-size: 0.85rem; font-weight: 600; color: #8B5A65; }
+.play-dark .play-hint { color: #FDD5DF; }
+.play-win { width: 100%; font-family: 'Covered By Your Grace', 'Caveat', cursive; font-size: 1.15rem; color: #C2607A; }
+.play-dark .play-win { color: #FDD5DF; }
+.play-btn, .play-btn:focus { display: inline-flex; align-items: center; padding: 0.5rem 1.1rem; border-radius: 999px; font-weight: 700; font-size: 0.88rem; color: #fff; background: linear-gradient(135deg, #D9A5AC, #C2607A); border: 0; outline: none; text-decoration: none; cursor: pointer; box-shadow: 0 4px 10px rgba(194, 96, 122, 0.3); }
+.play-btn-ghost, .play-btn-ghost:focus { color: #C2607A; background: #FDE7EE; box-shadow: none; }
+.play-btn:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #C2607A; }
+
+/* Loves me, loves me not */
+.petal-flower { position: relative; width: 220px; height: 220px; margin: 0.75rem auto 0; }
+.petal, .petal:focus {
+  position: absolute; left: 50%; top: 50%; width: 38px; height: 84px; margin: -84px 0 0 -19px; padding: 0; border: 0; outline: none; cursor: pointer;
+  border-radius: 50% 50% 46% 46% / 62% 62% 38% 38%;
+  background: radial-gradient(120% 80% at 40% 25%, #FFFFFF 0%, #FFFFFF 45%, #F6E3E8 100%);
+  box-shadow: inset 0 -6px 10px rgba(200, 139, 149, 0.25), inset 0 3px 2px rgba(255, 255, 255, 0.9), 0 3px 6px rgba(139, 90, 101, 0.18);
+  transform-origin: 50% 100%; transform: rotate(var(--a));
+  transition: transform 0.25s ease, filter 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.petal:hover:not(:disabled) { transform: rotate(var(--a)) scale(1.07); filter: brightness(1.03); }
+.petal:focus-visible { box-shadow: 0 0 0 3px #C2607A; }
+.petal.is-picked { pointer-events: none; animation: petal-fall 1.4s ease-in forwards; }
+@keyframes petal-fall {
+  0% { transform: rotate(var(--a)); opacity: 1; }
+  25% { transform: rotate(var(--a)) translateY(-22px) rotate(20deg); opacity: 1; }
+  100% { transform: rotate(calc(var(--a) + 160deg)) translate(var(--fall), -170px) scale(0.6); opacity: 0; }
+}
+.petal-center {
+  position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 999px; z-index: 2; pointer-events: none;
+  background: radial-gradient(circle at 38% 32%, #FFE9A3 0%, #F6C453 55%, #E0A93B 100%);
+  box-shadow: inset 0 -4px 6px rgba(160, 100, 20, 0.35), 0 3px 8px rgba(139, 90, 101, 0.25);
+}
+.petal-flower.is-done .petal-center { animation: center-happy 0.8s cubic-bezier(0.34, 1.6, 0.64, 1); }
+@keyframes center-happy { 0% { transform: scale(1); } 40% { transform: scale(1.25) rotate(-10deg); } 100% { transform: scale(1); } }
+.petal-bubble {
+  position: absolute; left: 50%; top: -6px; z-index: 3; transform: translateX(-50%); white-space: nowrap;
+  padding: 0.35rem 0.8rem; border-radius: 999px; font-family: 'Covered By Your Grace', 'Caveat', cursive; font-size: 1.15rem; line-height: 1.1;
+  color: #8B4A5A; background: #FFF3C4; box-shadow: 0 3px 8px rgba(217, 162, 27, 0.25); animation: bubble-pop 0.4s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+.petal-bubble.is-final { top: 50%; transform: translate(-50%, -50%); font-size: 1.35rem; color: #fff; background: linear-gradient(135deg, #E8909F, #C2607A); box-shadow: 0 6px 16px rgba(194, 96, 122, 0.4); white-space: normal; width: 190px; padding: 0.6rem 0.8rem; }
+@keyframes bubble-pop { from { opacity: 0; scale: 0.6; } to { opacity: 1; scale: 1; } }
+
+/* Water the chart */
+.chart-garden { position: relative; height: 220px; margin: 0.75rem auto 0; max-width: 300px; }
+.watering-can, .watering-can:focus { position: absolute; top: 0; right: 0; width: 92px; height: 70px; padding: 0; border: 0; background: none; outline: none; cursor: pointer; z-index: 3; transform-origin: 70% 60%; transition: transform 0.35s cubic-bezier(0.34, 1.5, 0.64, 1); -webkit-tap-highlight-color: transparent; }
+.watering-can svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 6px rgba(139, 90, 101, 0.25)); }
+.watering-can:hover:not(:disabled) { transform: rotate(-8deg) scale(1.05); }
+.watering-can.is-pouring { transform: rotate(-32deg) translate(-8px, 6px); }
+.watering-can:disabled { cursor: default; opacity: 0.85; }
+.watering-can:focus-visible svg { filter: drop-shadow(0 0 0 #C2607A) drop-shadow(0 0 3px #C2607A); }
+.drops { position: absolute; left: 0; top: 34px; width: 30px; height: 80px; pointer-events: none; }
+.drops i { position: absolute; top: 0; width: 7px; height: 11px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #7FC3E8; opacity: 0; }
+.drops i:nth-child(1) { left: 2px; } .drops i:nth-child(2) { left: 12px; } .drops i:nth-child(3) { left: 22px; }
+.is-pouring .drops i { animation: drop 0.6s ease-in infinite; }
+.is-pouring .drops i:nth-child(2) { animation-delay: 0.15s; } .is-pouring .drops i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes drop { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(90px); opacity: 0; } }
+.garden-bars { position: absolute; left: 14px; right: 86px; bottom: 18px; top: 40px; display: flex; align-items: flex-end; justify-content: space-around; gap: 10px; }
+.garden-bar-wrap { position: relative; flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; max-width: 46px; }
+.garden-bar {
+  width: 100%; border-radius: 10px 10px 4px 4px; transition: height 0.7s cubic-bezier(0.34, 1.4, 0.64, 1); transition-delay: var(--d);
+  background: linear-gradient(180deg, #E8909F 0%, #C2607A 100%); box-shadow: inset 0 3px 2px rgba(255, 255, 255, 0.45), inset 0 -6px 8px rgba(110, 50, 66, 0.25);
+}
+.garden-bar-wrap:nth-child(1) .garden-bar { background: linear-gradient(180deg, #F7C3CF, #E8909F); }
+.garden-bar-wrap:nth-child(2) .garden-bar { background: linear-gradient(180deg, #F2A7B8, #D9788F); }
+.garden-bloom { position: relative; font-size: 1.6rem; line-height: 1; margin-bottom: -4px; transform: scale(0); opacity: 0; }
+.garden-bloom.is-open { animation: bloom 0.6s cubic-bezier(0.34, 1.8, 0.64, 1) forwards; animation-delay: calc(0.7s + var(--d)); }
+@keyframes bloom { from { transform: scale(0) rotate(-90deg); opacity: 0; } to { transform: scale(1) rotate(0); opacity: 1; } }
+.garden-ground { position: absolute; left: 0; right: 0; bottom: 6px; height: 14px; border-radius: 999px; background: linear-gradient(180deg, #CBE8B5, #A8D98F); box-shadow: 0 3px 0 rgba(120, 170, 100, 0.35); }
+.chart-garden.is-full .garden-bar { animation: bar-cheer 0.6s ease 0.9s; }
+@keyframes bar-cheer { 50% { transform: scaleY(1.04); } }
+@media (prefers-reduced-motion: reduce) {
+  .petal.is-picked { animation-duration: 0.01s; } .garden-bar { transition: none; } .is-pouring .drops i { animation: none; }
+}
+/* play corner polish */
+.petal, .petal:focus { border: 1.5px solid #F1D3DA; }
+.garden-bloom { width: 34px; height: 34px; margin-bottom: -6px; }
+.drops { left: 2px; top: 30px; }
+.watering-can, .watering-can:focus { width: 100px; height: 80px; }

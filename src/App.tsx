@@ -28,6 +28,7 @@ const Skills = lazy(() => import('./components/section/Skills'))
 const Certifications = lazy(() => import('./components/section/Certifications'))
 const Recognition = lazy(() => import('./components/section/Recognition'))
 const Volunteering = lazy(() => import('./components/section/Volunteering'))
+const PlayCorner = lazy(() => import('./components/section/PlayCorner'))
 const Footer = lazy(() => import('./components/Footer'))
 
 function HomePage() {
@@ -96,6 +97,9 @@ function HomePage() {
       </Suspense>
       <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
         <Volunteering />
+      </Suspense>
+      <Suspense fallback={<div className="h-64" />}>
+        <PlayCorner />
       </Suspense>
     </>
   )

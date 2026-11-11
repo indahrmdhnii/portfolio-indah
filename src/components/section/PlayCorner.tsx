@@ -1,0 +1,150 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import SectionTitle from '../fx/SectionTitle';
+import DraggableDaisy from '../fx/DraggableDaisy';
+import { useDarkMode } from '../../contexts/DarkModeContext';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { play } from '../../data/content';
+import { icons3d } from '../../assets/icons3d';
+
+/* ------------------------------------------------------------------ */
+/* 1. Loves me, loves me not: pull the petals, the last one says yes   */
+/* ------------------------------------------------------------------ */
+const PETALS = 9; // odd, so the last petal always lands on the "yes"
+
+const DaisyPetals = () => {
+  const { lang, t } = useLanguage();
+  const [picked, setPicked] = useState<number[]>([]);
+  const [message, setMessage] = useState<string | null>(null);
+  const lines = play.petals.lines[lang];
+  const done = picked.length === PETALS;
+
+  const pick = (i: number) => {
+    if (picked.includes(i)) return;
+    const next = [...picked, i];
+    setPicked(next);
+    setMessage(next.length === PETALS ? t(play.petals.final) : lines[(next.length - 1) % lines.length]);
+  };
+  const reset = () => { setPicked([]); setMessage(null); };
+
+  return (
+    <div className="play-card" data-reveal="up">
+      <p className="play-kicker">{t(play.petals.kicker)}</p>
+      <h3 className="play-title">{t(play.petals.title)}</h3>
+      <div className={`petal-flower ${done ? 'is-done' : ''}`}>
+        {Array.from({ length: PETALS }, (_, i) => (
+          <button
+            key={i}
+            type="button"
+            className={`petal ${picked.includes(i) ? 'is-picked' : ''}`}
+            style={{ ['--a' as string]: `${(360 / PETALS) * i}deg`, ['--fall' as string]: `${(i % 2 ? 1 : -1) * (40 + (i * 13) % 50)}px` }}
+            onClick={() => pick(i)}
+            disabled={picked.includes(i)}
+            aria-label={`${t(play.petals.pickLabel)} ${i + 1}`}
+          />
+        ))}
+        <span className="petal-center" aria-hidden="true" />
+        {message && <span key={picked.length} className={`petal-bubble ${done ? 'is-final' : ''}`} aria-live="polite">{message}</span>}
+      </div>
+      <div className="play-actions">
+        {done ? (
+          <>
+            <Link to="/contact" className="play-btn">{t(play.petals.cta)}</Link>
+            <button type="button" className="play-btn play-btn-ghost" onClick={reset}>{t(play.again)}</button>
+          </>
+        ) : (
+          <p className="play-hint">{t(play.petals.hint)} · {PETALS - picked.length} {t(play.petals.left)}</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* 2. Water the chart: every pour grows the bars, then daisies bloom   */
+/* ------------------------------------------------------------------ */
+const MAX = 4;
+const BASE = [26, 40, 56]; // starting bar heights (%)
+
+const WaterTheChart = () => {
+  const { t } = useLanguage();
+  const [level, setLevel] = useState(0);
+  const [pouring, setPouring] = useState(false);
+  const full = level >= MAX;
+
+  const water = () => {
+    if (pouring || full) return;
+    setPouring(true);
+    window.setTimeout(() => { setLevel((l) => Math.min(MAX, l + 1)); setPouring(false); }, 700);
+  };
+  const reset = () => setLevel(0);
+
+  return (
+    <div className="play-card" data-reveal="up" style={{ ['--i' as string]: 1 }}>
+      <p className="play-kicker">{t(play.chart.kicker)}</p>
+      <h3 className="play-title">{t(play.chart.title)}</h3>
+      <div className={`chart-garden ${full ? 'is-full' : ''}`}>
+        <button
+          type="button"
+          className={`watering-can ${pouring ? 'is-pouring' : ''}`}
+          onClick={water}
+          disabled={full}
+          aria-label={t(play.chart.waterLabel)}
+        >
+          <svg viewBox="0 0 120 96" aria-hidden="true">
+            {/* handle */}
+            <path d="M46 30 C 48 8, 92 8, 94 30" fill="none" stroke="#C2607A" strokeWidth="7" strokeLinecap="round" />
+            {/* spout + rose */}
+            <path d="M40 66 L12 34" stroke="#E8909F" strokeWidth="10" strokeLinecap="round" />
+            <ellipse cx="11" cy="31" rx="9" ry="6" transform="rotate(-48 11 31)" fill="#C2607A" />
+            {/* body */}
+            <rect x="36" y="30" width="66" height="54" rx="16" fill="#F2A7B8" />
+            <rect x="36" y="30" width="66" height="20" rx="10" fill="#F7C3CF" />
+            <circle cx="69" cy="62" r="9" fill="#FFF5F7" />
+            <circle cx="69" cy="62" r="4" fill="#F6C453" />
+          </svg>
+          <span className="drops" aria-hidden="true"><i /><i /><i /></span>
+        </button>
+        <div className="garden-bars">
+          {BASE.map((b, i) => (
+            <div key={i} className="garden-bar-wrap">
+              <img className={`garden-bloom ${full ? 'is-open' : ''}`} style={{ ['--d' as string]: `${i * 0.15}s` }} src={icons3d.daisy} alt="" aria-hidden="true" />
+              <div className="garden-bar" style={{ height: `${Math.min(100, b + level * (100 - b) / MAX)}%`, ['--d' as string]: `${i * 0.08}s` }} />
+            </div>
+          ))}
+        </div>
+        <div className="garden-ground" aria-hidden="true" />
+      </div>
+      <div className="play-actions">
+        {full ? (
+          <>
+            <p className="play-win">{t(play.chart.win)}</p>
+            <button type="button" className="play-btn play-btn-ghost" onClick={reset}>{t(play.again)}</button>
+          </>
+        ) : (
+          <p className="play-hint">{t(play.chart.hint)} · {level}/{MAX}</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const PlayCorner = () => {
+  const { isDarkMode } = useDarkMode();
+  const { t } = useLanguage();
+  return (
+    <section id="play" className={`play-corner relative ${isDarkMode ? 'play-dark' : ''}`}>
+      <DraggableDaisy style={{ top: '8%', left: '6%' }} size={30} rotate={-12} />
+      <DraggableDaisy style={{ bottom: '10%', right: '7%' }} size={40} rotate={14} />
+      <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
+        <SectionTitle subtitle={t(play.subtitle)}>{t(play.title)}</SectionTitle>
+        <div className="play-grid">
+          <DaisyPetals />
+          <WaterTheChart />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default PlayCorner;
