@@ -81,6 +81,7 @@ const Experience = () => {
                     <CardTitle className="text-xl md:text-2xl" style={{ color: titleColor }}>{t(exp.title)}</CardTitle>
                     <p className="text-lg font-semibold text-gray-700 dark:text-gray-300 mt-1">{exp.company}</p>
                     {exp.legalName && <p className="exp-legal">{exp.legalName}</p>}
+                    {exp.badge && <p className="exp-badge"><span aria-hidden="true">🏆</span>{t(exp.badge)}</p>}
                     <div className="flex flex-wrap gap-2 mt-2">
                       {exp.current && <span className="tag tag-current">{t(ui.experience.current)}</span>}
                       <span className="tag">{t(trackLabel[exp.track])}</span>

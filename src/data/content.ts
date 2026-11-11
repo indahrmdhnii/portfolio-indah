@@ -239,6 +239,8 @@ export interface ExperienceItem {
   // Remove or change any that are not accurate.
   domain?: Domain;
   current?: boolean;
+  /** Highlighted achievement shown as a gold badge on the card */
+  badge?: L;
   description?: { en: string[]; id: string[] };
 }
 
@@ -287,6 +289,10 @@ export const experiences: ExperienceItem[] = [
     period: { en: 'May 2026 – Oct 2026', id: 'Mei 2026 – Okt 2026' },
     track: 'bd',
     domain: 'edutech',
+    badge: {
+      en: 'Got "Best Manager" across all divisions for Q3 2026!',
+      id: 'Meraih "Best Manager" dari seluruh divisi untuk Q3 2026!',
+    },
   },
   {
     title: { en: 'ID Camp 2025 · AI Multi-Platform App', id: 'ID Camp 2025 · AI Multi-Platform App' },
