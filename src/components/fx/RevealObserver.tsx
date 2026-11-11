@@ -30,8 +30,24 @@ const RevealObserver = () => {
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      // Any visible pixel counts: tall panels (zoomed-in browsers, narrow screens) never reach a % threshold
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' }
     );
+
+    // Safety net: on scroll/resize, reveal anything that is on screen or already scrolled past,
+    // so content can never stay invisible if the observer misses it
+    let ticking = false;
+    const sweep = () => {
+      ticking = false;
+      const limit = window.innerHeight;
+      document.querySelectorAll<HTMLElement>('[data-reveal]:not(.revealed)').forEach((el) => {
+        if (el.getBoundingClientRect().top < limit) { el.classList.add('revealed'); io.unobserve(el); }
+      });
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(sweep); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    const settle = window.setTimeout(sweep, 1200);
 
     const watched = new WeakSet<Element>();
     const scan = () => {
@@ -48,6 +64,9 @@ const RevealObserver = () => {
     return () => {
       io.disconnect();
       mo.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.clearTimeout(settle);
     };
   }, []);
 
