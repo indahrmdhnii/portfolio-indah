@@ -230,6 +230,8 @@ export const domainLabel: Record<Domain, L> = {
 export interface ExperienceItem {
   title: L;
   company: string;
+  /** Registered legal entity, shown small under the company name */
+  legalName?: string;
   location: L;
   period: L;
   track: ExpTrack;
@@ -244,6 +246,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: { en: 'Business Development', id: 'Business Development' },
     company: 'Kunci Hukum Indonesia',
+    legalName: 'PT Kunci Hukum Indonesia',
     location: { en: 'West Java, Indonesia', id: 'Jawa Barat, Indonesia' },
     period: { en: 'Sep 2026 – Present', id: 'Sep 2026 – Sekarang' },
     track: 'bd',
@@ -253,6 +256,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: { en: 'Business Administration Intelligence Analyst', id: 'Business Administration Intelligence Analyst' },
     company: 'VINIX7',
+    legalName: 'PT Vinix Seven Aurum',
     location: { en: 'Jakarta, Indonesia', id: 'Jakarta, Indonesia' },
     period: { en: 'Sep 2026 – Present', id: 'Sep 2026 – Sekarang' },
     track: 'data',
@@ -261,6 +265,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: { en: 'Business Development', id: 'Business Development' },
     company: 'HelloBeauty.id',
+    legalName: 'PT Halo Grup Indo',
     location: { en: 'North Jakarta, Indonesia', id: 'Jakarta Utara, Indonesia' },
     period: { en: 'Jul 2026 – Present', id: 'Jul 2026 – Sekarang' },
     track: 'bd',
@@ -277,6 +282,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: { en: 'Business Development Manager', id: 'Business Development Manager' },
     company: 'Kelas Kampus Indonesia',
+    legalName: 'PT Kelas Kampus Indonesia',
     location: { en: 'Indonesia', id: 'Indonesia' },
     period: { en: 'May 2026 – Oct 2026', id: 'Mei 2026 – Okt 2026' },
     track: 'bd',
