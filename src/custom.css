@@ -1124,3 +1124,59 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 @keyframes daisy-sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
 @media (prefers-reduced-motion: reduce) { .daisy img { animation: none; } }
 @media (max-width: 640px) { .daisy-journal { width: 52px !important; height: 52px !important; top: -22px !important; } }
+
+/* ---------- Floating daisy music player ---------- */
+.daisy-music { position: fixed; left: 18px; bottom: 18px; z-index: 80; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.daisy-music-btn {
+  position: relative; width: 58px; height: 58px; border-radius: 999px; padding: 6px; cursor: pointer;
+  background: radial-gradient(circle at 35% 30%, #FFFFFF, #FDE7EE); border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(200, 139, 149, 0.35), 0 8px 18px rgba(139, 90, 101, 0.25);
+  transition: transform 0.3s cubic-bezier(0.34, 1.6, 0.64, 1); -webkit-tap-highlight-color: transparent;
+}
+.daisy-music-btn:hover { transform: scale(1.08) rotate(-6deg); }
+.daisy-music-btn img { width: 100%; height: 100%; display: block; }
+.daisy-music-btn.spinning img { animation: daisy-spin 6s linear infinite; }
+@keyframes daisy-spin { to { transform: rotate(360deg); } }
+.daisy-music-note {
+  position: absolute; top: -6px; right: -4px; width: 22px; height: 22px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff; background: #C2607A; box-shadow: 0 2px 6px rgba(139, 90, 101, 0.3);
+}
+.daisy-music-btn.spinning .daisy-music-note { animation: note-bob 1.2s ease-in-out infinite; }
+@keyframes note-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.daisy-music-card {
+  width: 272px; padding: 12px; border-radius: 18px; background: #FFFDFB;
+  border: 1px solid rgba(234, 190, 195, 0.6); box-shadow: 0 14px 34px rgba(139, 90, 101, 0.25);
+  animation: music-pop 0.35s cubic-bezier(0.34, 1.5, 0.64, 1);
+}
+.daisy-music-card[hidden] { display: none; }
+@keyframes music-pop { from { opacity: 0; transform: translateY(10px) scale(0.95); } to { opacity: 1; transform: none; } }
+.daisy-music-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.daisy-music-kicker { font-family: 'Covered By Your Grace', 'Caveat', cursive; font-size: 1.05rem; line-height: 1; color: #C2607A; }
+.daisy-music-title { font-weight: 700; font-size: 0.95rem; color: #6B4C57; margin-top: 2px; }
+.daisy-music-title span { font-weight: 500; color: #8B5A65; opacity: 0.85; }
+.daisy-music-close { flex-shrink: 0; width: 28px; height: 28px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #8B5A65; background: #FDE7EE; cursor: pointer; }
+.daisy-music-player { width: 100%; height: 200px; border-radius: 12px; overflow: hidden; background: #000; }
+.daisy-music-player iframe { width: 100%; height: 100%; border: 0; display: block; }
+.daisy-music-play {
+  margin-top: 10px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0.55rem; border-radius: 999px;
+  font-weight: 700; font-size: 0.88rem; color: #fff; background: linear-gradient(135deg, #D9A5AC, #C2607A); cursor: pointer;
+  box-shadow: 0 4px 10px rgba(194, 96, 122, 0.3);
+}
+.daisy-music-play:hover { filter: brightness(1.05); }
+.dark .daisy-music-card { background: #624A57; border-color: rgba(253, 213, 223, 0.25); }
+.dark .daisy-music-title { color: #FFFFFF; }
+.dark .daisy-music-title span { color: #FDD5DF; }
+.dark .daisy-music-close { background: rgba(253, 213, 223, 0.15); color: #FDD5DF; }
+@media (max-width: 640px) {
+  .daisy-music { left: 12px; bottom: 12px; }
+  .daisy-music-btn { width: 50px; height: 50px; }
+  .daisy-music-card { width: min(272px, calc(100vw - 24px)); }
+}
+@media (prefers-reduced-motion: reduce) { .daisy-music-btn.spinning img, .daisy-music-btn.spinning .daisy-music-note { animation: none; } }
+/* Override the template's global button + focus styles for the music player */
+.daisy-music button { border: 0; font-family: inherit; }
+.daisy-music .daisy-music-btn, .daisy-music .daisy-music-btn:focus { border-radius: 999px; border: 2px solid #fff; padding: 6px; outline: none; }
+.daisy-music .daisy-music-btn:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 5px #C2607A, 0 8px 18px rgba(139, 90, 101, 0.25); }
+.daisy-music .daisy-music-close, .daisy-music .daisy-music-close:focus { padding: 0; border-radius: 999px; outline: none; }
+.daisy-music .daisy-music-play, .daisy-music .daisy-music-play:focus { border-radius: 999px; outline: none; }
+.daisy-music .daisy-music-close:focus-visible, .daisy-music .daisy-music-play:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #C2607A; }

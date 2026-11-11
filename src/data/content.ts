@@ -704,6 +704,9 @@ export const highlights = {
   },
 };
 
+// Song in the floating daisy player (official YouTube video, embedded)
+export const music = { title: 'daisy', artist: 'wave to earth', youtubeId: 'VJhN9D4SM_c' };
+
 export const ui = {
   nav: {
     about: { en: 'About', id: 'Tentang' },
@@ -797,6 +800,15 @@ export const ui = {
     connect: { en: 'Connect', id: 'Terhubung' },
     follow: { en: 'Follow', id: 'Ikuti' },
     back: { en: 'Back to Home', id: 'Kembali ke Beranda' },
+  },
+  music: {
+    label: { en: 'Music player', id: 'Pemutar musik' },
+    open: { en: 'Play a song: daisy by wave to earth', id: 'Putar lagu: daisy oleh wave to earth' },
+    close: { en: 'Close music player', id: 'Tutup pemutar musik' },
+    nowPlaying: { en: 'now playing ♪', id: 'sedang diputar ♪' },
+    paused: { en: 'a song I love', id: 'lagu favoritku' },
+    play: { en: 'Play', id: 'Putar' },
+    pause: { en: 'Pause', id: 'Jeda' },
   },
   footer: {
     madeWith: { en: 'Made with', id: 'Dibuat dengan' },

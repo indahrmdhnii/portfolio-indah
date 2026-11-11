@@ -12,6 +12,7 @@ import RevealObserver from './components/fx/RevealObserver'
 import ClickSparkles from './components/fx/ClickSparkles'
 import ScrollProgress from './components/fx/ScrollProgress'
 import Highlights from './components/section/Highlights'
+import DaisyMusic from './components/fx/DaisyMusic'
 import { SplashContext } from './contexts/SplashContext'
 import './App.css'
 import './custom.css'
@@ -130,6 +131,7 @@ function AppContent() {
       <RevealObserver />
       <ClickSparkles />
       <ScrollProgress />
+      {!splashVisible && <DaisyMusic />}
       <Navigation />
       <div className="app transition-colors duration-300" style={{ backgroundColor: isDarkMode ? '#4E3945' : undefined }}>
         <a
