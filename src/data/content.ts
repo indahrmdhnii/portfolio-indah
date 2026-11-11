@@ -446,7 +446,11 @@ export const skillGroups: { title: L; items: string[] }[] = [
   },
   {
     title: { en: 'Creative', id: 'Kreatif' },
-    items: ['UI Design', 'Brand Strategy', 'Character Design', '3D Modeling', 'Procreate', 'Blender', 'Copywriting', 'Community Management'],
+    items: ['UI Design', 'Brand Strategy', 'Character Design', '3D Modeling', 'Figma', 'Canva', 'Procreate', 'Blender', 'Copywriting', 'Community Management'],
+  },
+  {
+    title: { en: 'Productivity', id: 'Produktivitas' },
+    items: ['Microsoft Office', 'Google Workspace', 'Notion', 'Lark', 'Trello'],
   },
 ];
 

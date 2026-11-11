@@ -1098,3 +1098,7 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 /* Long codes (DOI, HKI numbers, credential IDs) wrap inside their card on small screens */
 .ip-number, .cert-id, .work-meta, .work-venue { overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
 .work-card > .min-w-0 { min-width: 0; }
+/* 5 skill groups: 3 + 2 centred on desktop, stacked on phones */
+.skill-groups { display: flex; flex-wrap: wrap; justify-content: center; }
+.skill-group { flex: 1 1 280px; max-width: 370px; }
+@media (max-width: 640px) { .skill-group { max-width: none; } }
