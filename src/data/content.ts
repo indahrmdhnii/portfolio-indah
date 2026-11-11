@@ -491,6 +491,10 @@ export const awards: { title: L; detail?: L; year: string; medal: 'gold' | 'silv
   },
   {
     title: { en: 'Top 50 Youth Sociopreneur 2025', id: 'Top 50 Youth Sociopreneur 2025' },
+    detail: {
+      en: 'Selected as Top 50 out of 602 national teams · by Kepul',
+      id: 'Terpilih sebagai Top 50 dari 602 tim nasional · oleh Kepul',
+    },
     year: '2025',
     medal: 'star',
   },
