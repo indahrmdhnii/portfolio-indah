@@ -280,6 +280,7 @@ export const experiences: ExperienceItem[] = [
     period: { en: 'May 2026 – Oct 2026', id: 'Mei 2026 – Okt 2026' },
     track: 'bd',
     domain: 'community',
+    badge: { en: 'Got "Best Staff"!', id: 'Meraih "Best Staff"!' },
   },
   {
     title: { en: 'Business Development Manager', id: 'Business Development Manager' },
