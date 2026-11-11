@@ -391,6 +391,7 @@ export const experiences: ExperienceItem[] = [
     location: { en: 'West Jakarta, Indonesia', id: 'Jakarta Barat, Indonesia' },
     period: { en: 'May 2024 – Nov 2024', id: 'Mei 2024 – Nov 2024' },
     track: 'program',
+    badge: { en: 'Finalist', id: 'Finalis' },
     description: {
       en: [
         'Selected as a P2MW 2024 grantee in the field of Digital Business, building Writeen through the program.',
