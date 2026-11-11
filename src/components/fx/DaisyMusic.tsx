@@ -77,6 +77,9 @@ const DaisyMusic = ({ autoStart = false }: { autoStart?: boolean }) => {
 
   const toggleOpen = () => {
     if (open) { wantAutoplay.current = false; controller.current?.pause(); setPlaying(false); setOpen(false); return; }
+    // Tapping the daisy opens the card and starts the song
+    wantAutoplay.current = true;
+    if (controller.current) controller.current.play();
     setLoaded(true);
     setOpen(true);
   };
@@ -86,7 +89,7 @@ const DaisyMusic = ({ autoStart = false }: { autoStart?: boolean }) => {
       {loaded && (
         <div className="daisy-music-card" role="dialog" aria-label={t(ui.music.label)} hidden={!open}>
           <div className="daisy-music-head">
-            <p className="daisy-music-kicker">{playing ? t(ui.music.nowPlaying) : wantAutoplay.current ? t(ui.music.tapToStart) : t(ui.music.paused)}</p>
+            <p className="daisy-music-kicker">{playing ? t(ui.music.nowPlaying) : t(ui.music.paused)}</p>
             <button type="button" className="daisy-music-close" onClick={toggleOpen} aria-label={t(ui.music.close)}><X size={16} /></button>
           </div>
           <div className="daisy-music-player">

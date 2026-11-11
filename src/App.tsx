@@ -131,7 +131,7 @@ function AppContent() {
       <RevealObserver />
       <ClickSparkles />
       <ScrollProgress />
-      {!splashVisible && <DaisyMusic autoStart />}
+      {!splashVisible && <DaisyMusic />}
       <Navigation />
       <div className="app transition-colors duration-300" style={{ backgroundColor: isDarkMode ? '#4E3945' : undefined }}>
         <a
