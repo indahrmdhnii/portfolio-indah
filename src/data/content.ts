@@ -704,8 +704,8 @@ export const highlights = {
   },
 };
 
-// Song in the floating daisy player (official YouTube video, embedded)
-export const music = { title: 'daisy', artist: 'wave to earth', youtubeId: 'VJhN9D4SM_c' };
+// Song in the floating daisy player (Spotify embed, music only)
+export const music = { title: 'daisy', artist: 'wave to earth', spotifyId: '18gHmYZHV9JHZ0VUpjYlFs' };
 
 export const ui = {
   nav: {
@@ -807,8 +807,6 @@ export const ui = {
     close: { en: 'Close music player', id: 'Tutup pemutar musik' },
     nowPlaying: { en: 'now playing ♪', id: 'sedang diputar ♪' },
     paused: { en: 'a song I love', id: 'lagu favoritku' },
-    play: { en: 'Play', id: 'Putar' },
-    pause: { en: 'Pause', id: 'Jeda' },
   },
   footer: {
     madeWith: { en: 'Made with', id: 'Dibuat dengan' },

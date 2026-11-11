@@ -1180,3 +1180,9 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .daisy-music .daisy-music-close, .daisy-music .daisy-music-close:focus { padding: 0; border-radius: 999px; outline: none; }
 .daisy-music .daisy-music-play, .daisy-music .daisy-music-play:focus { border-radius: 999px; outline: none; }
 .daisy-music .daisy-music-close:focus-visible, .daisy-music .daisy-music-play:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #C2607A; }
+/* Spotify compact player (music only) */
+.daisy-music-head { align-items: center; margin-bottom: 6px; }
+.daisy-music-player { height: 80px; border-radius: 12px; background: transparent; }
+.daisy-music-player iframe, .daisy-music-player > div, .daisy-music-player > div > iframe { width: 100%; height: 80px; border: 0; border-radius: 12px; display: block; }
+.daisy-music-card { width: 300px; }
+@media (max-width: 640px) { .daisy-music-card { width: min(300px, calc(100vw - 24px)); } }
