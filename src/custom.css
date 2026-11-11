@@ -1095,3 +1095,6 @@ img.hero-photo-heart { width: 50px; height: 50px; }
   .drag-me-hint img { width: 30px !important; height: 30px !important; margin-left: 0 !important; }
   .drag-me-hint span { font-size: 18px !important; }
 }
+/* Long codes (DOI, HKI numbers, credential IDs) wrap inside their card on small screens */
+.ip-number, .cert-id, .work-meta, .work-venue { overflow-wrap: anywhere; word-break: break-word; min-width: 0; }
+.work-card > .min-w-0 { min-width: 0; }

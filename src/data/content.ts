@@ -177,7 +177,7 @@ export const projects: Project[] = [
       { en: 'UI/UX Design', id: 'Desain UI/UX' },
       { en: 'HKI', id: 'HKI' },
     ],
-    preview: { shots: [lintasHome, lintasRoutes, lintasTrip, lintasSearch, lintasSplash] },
+    preview: { shots: [lintasSplash, lintasHome, lintasRoutes, lintasTrip, lintasSearch] },
   },
   {
     title: 'Boteen',
