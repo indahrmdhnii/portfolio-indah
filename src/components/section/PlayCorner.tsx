@@ -114,9 +114,9 @@ const WaterTheChart = () => {
                   src={icons3d.daisy}
                   alt=""
                   aria-hidden="true"
-                  style={{ ['--s' as string]: `${0.45 + 0.55 * grow}`, ['--d' as string]: `${i * 0.12}s` }}
+                  style={{ ['--s' as string]: `${0.55 + 0.45 * grow}`, ['--d' as string]: `${i * 0.12}s` }}
                 />
-                <div className="garden-stem" style={{ height: `calc((100% - 48px) * ${(Math.min(100, b + grow * (100 - b)) / 100).toFixed(3)})`, ['--d' as string]: `${i * 0.08}s` }}>
+                <div className="garden-stem" style={{ height: `calc((100% - 66px) * ${(0.62 * Math.min(100, b + grow * (100 - b)) / 100).toFixed(3)})`, ['--d' as string]: `${i * 0.08}s` }}>
                   <span className="leaf leaf-l" />
                   <span className="leaf leaf-r" />
                 </div>
