@@ -729,10 +729,10 @@ export const play = {
     cta: { en: 'Say hi →', id: 'Sapa aku →' } as L,
   },
   chart: {
-    kicker: { en: 'water the chart', id: 'siram grafiknya' } as L,
+    kicker: { en: 'water the daisies', id: 'siram daisy-nya' } as L,
     title: { en: 'Help the numbers grow', id: 'Bantu angkanya tumbuh' } as L,
     hint: { en: 'Tap the watering can', id: 'Ketuk tekonya' } as L,
-    waterLabel: { en: 'Water the chart', id: 'Siram grafiknya' } as L,
+    waterLabel: { en: 'Water the daisies', id: 'Siram daisy-nya' } as L,
     win: { en: 'Analyze like a skeptic, build like a believer ♡', id: 'Menganalisis dengan kritis, membangun dengan yakin ♡' } as L,
   },
 };

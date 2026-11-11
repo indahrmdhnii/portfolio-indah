@@ -105,12 +105,24 @@ const WaterTheChart = () => {
           <span className="drops" aria-hidden="true"><i /><i /><i /></span>
         </button>
         <div className="garden-bars">
-          {BASE.map((b, i) => (
-            <div key={i} className="garden-bar-wrap">
-              <img className={`garden-bloom ${full ? 'is-open' : ''}`} style={{ ['--d' as string]: `${i * 0.15}s` }} src={icons3d.daisy} alt="" aria-hidden="true" />
-              <div className="garden-bar" style={{ height: `${Math.min(100, b + level * (100 - b) / MAX)}%`, ['--d' as string]: `${i * 0.08}s` }} />
-            </div>
-          ))}
+          {BASE.map((b, i) => {
+            const grow = level / MAX;
+            return (
+              <div key={i} className="garden-bar-wrap">
+                <img
+                  className={`garden-head ${full ? 'is-open' : ''}`}
+                  src={icons3d.daisy}
+                  alt=""
+                  aria-hidden="true"
+                  style={{ ['--s' as string]: `${0.45 + 0.55 * grow}`, ['--d' as string]: `${i * 0.12}s` }}
+                />
+                <div className="garden-stem" style={{ height: `calc((100% - 48px) * ${(Math.min(100, b + grow * (100 - b)) / 100).toFixed(3)})`, ['--d' as string]: `${i * 0.08}s` }}>
+                  <span className="leaf leaf-l" />
+                  <span className="leaf leaf-r" />
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className="garden-ground" aria-hidden="true" />
       </div>
