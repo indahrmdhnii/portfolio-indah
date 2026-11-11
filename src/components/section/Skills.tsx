@@ -7,6 +7,7 @@ import { withAlpha } from "../../hooks/useThemeColors";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { skillGroups, ui } from "../../data/content";
 import { skillLogos, toDataUri } from "../../data/logos";
+import DraggableDaisy from '../fx/DraggableDaisy';
 
 // The dome shows one tile per skill. Tiles are small generated SVG images,
 // so there is nothing to upload: edit the skill list in src/data/content.ts.
@@ -119,6 +120,8 @@ const Skills = () => {
       background: themeColors.background.sections?.skills || themeColors.background.gradient,
       transition: 'background 0.3s ease-in-out'
     }}>
+      <DraggableDaisy style={{ top: '6%', right: '9%' }} size={40} rotate={10} />
+      <DraggableDaisy style={{ top: '16%', left: '5%' }} size={24} rotate={-20} />
       {/* Gradient overlay for smooth transition from previous section */}
       <div 
         className="absolute top-0 left-0 right-0 pointer-events-none"

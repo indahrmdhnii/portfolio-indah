@@ -7,6 +7,7 @@ import { useThemeColors } from '../../hooks/useThemeColors';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { experiences, trackLabel, domainLabel, ui } from '../../data/content';
 import type { ExpTrack } from '../../data/content';
+import DraggableDaisy from '../fx/DraggableDaisy';
 
 const INITIAL_COUNT = 5;
 
@@ -27,6 +28,7 @@ const Experience = () => {
       background: themeColors.background.sections?.experience || themeColors.background.gradient,
       transition: 'background 0.3s ease-in-out'
     }}>
+      <DraggableDaisy style={{ top: '4%', left: '8%' }} size={30} rotate={14} />
       {/* Subtle gradient overlay for top edge blending */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none"

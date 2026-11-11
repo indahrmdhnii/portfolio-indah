@@ -8,6 +8,7 @@ import { ui } from '../../data/content';
 import { certs } from '../../data/certs';
 import type { CertCategory } from '../../data/certs';
 import { issuerLogos, toDataUri } from '../../data/logos';
+import DraggableDaisy from '../fx/DraggableDaisy';
 
 const INITIAL_COUNT = 9;
 
@@ -48,6 +49,7 @@ const Certifications = () => {
       background: themeColors.background.sections?.certifications || themeColors.background.gradient,
       transition: 'background 0.3s ease-in-out'
     }}>
+      <DraggableDaisy style={{ top: '5%', right: '6%' }} size={28} rotate={-8} />
       <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
         <SectionTitle subtitle={t(ui.certs.subtitle).replace('{count}', String(certs.length))}>{t(ui.certs.title)}</SectionTitle>
 

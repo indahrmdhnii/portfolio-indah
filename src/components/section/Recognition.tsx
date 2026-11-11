@@ -5,6 +5,7 @@ import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors } from '../../hooks/useThemeColors';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { awards, intellectualProperty, publications, ui } from '../../data/content';
+import DraggableDaisy from '../fx/DraggableDaisy';
 
 const medalColor = { gold: '#D9A21B', silver: '#8A94A6', star: '#C2607A' };
 
@@ -22,6 +23,8 @@ const Recognition = () => {
       background: isDarkMode ? themeColors.background.gradientEnd : themeColors.colors.pink[25],
       transition: 'background 0.3s ease-in-out'
     }}>
+      <DraggableDaisy style={{ top: '3%', left: '7%' }} size={44} rotate={8} />
+      <DraggableDaisy style={{ top: '10%', right: '12%' }} size={22} rotate={-14} />
       <div className="container mx-auto px-6">
         <SectionTitle>{t(ui.recognition.title)}</SectionTitle>
 

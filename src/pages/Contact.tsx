@@ -34,7 +34,9 @@ const Contact = () => {
       </div>
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
-        <DraggableDaisy style={{ top: '-10px', right: '6%' }} size={70} rotate={8} />
+        <DraggableDaisy style={{ top: '-10px', right: '6%' }} size={58} rotate={8} />
+        <DraggableDaisy style={{ top: '30px', right: '1%' }} size={26} rotate={-16} />
+        <DraggableDaisy style={{ top: '46%', left: '-2%' }} size={34} rotate={12} />
         {/* Back Button */}
         <BackButton 
           to="/" 

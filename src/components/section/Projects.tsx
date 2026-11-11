@@ -11,6 +11,7 @@ import { comingSoon } from '../../assets';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { projects, projectStatusLabel, ui } from '../../data/content';
 import type { ProjectStatus } from '../../data/content';
+import DraggableDaisy from '../fx/DraggableDaisy';
 
 const statusStyle: Record<ProjectStatus, { bg: string; fg: string; dot: string }> = {
   live: { bg: '#DCFCE7', fg: '#166534', dot: '#22C55E' },
@@ -292,6 +293,8 @@ const Projects = () => {
       }}
       ref={containerRef}
     >
+      <DraggableDaisy style={{ top: '9%', left: '6%' }} size={34} rotate={-12} />
+      <DraggableDaisy style={{ bottom: '3%', right: '7%' }} size={26} rotate={18} />
       {/* Gradient overlay for smooth transition from previous section */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none"

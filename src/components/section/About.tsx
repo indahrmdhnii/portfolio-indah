@@ -167,7 +167,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" ref={sectionRef} className="min-h-screen" style={{
+    <section id="about" ref={sectionRef} className="min-h-screen relative" style={{
       background: themeColors.background.sections?.about || themeColors.background.gradient,
       transition: 'background 0.3s ease-in-out',
       width: '100%',
@@ -175,6 +175,8 @@ const About = () => {
       contain: 'layout style'
     }}>
       {/* Hero Section */}
+      <DraggableDaisy style={{ top: '22%', left: '57%' }} size={26} rotate={-8} className="daisy-hero-a" />
+      <DraggableDaisy style={{ top: '40%', left: '3%' }} size={22} rotate={20} className="daisy-hero-b" />
       <div className="py-10 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col-reverse md:flex-row justify-between items-center md:items-start max-w-6xl mx-auto gap-8 md:gap-10">
@@ -234,7 +236,8 @@ const About = () => {
               </div>
               <img className="hero-photo-star" src={icons3d.starGold} alt="" aria-hidden="true" />
               <img className="hero-photo-heart" src={icons3d.heart} alt="" aria-hidden="true" />
-              <DraggableDaisy style={{ bottom: '-22px', left: '-38px' }} size={66} rotate={-10} />
+              <DraggableDaisy style={{ bottom: '-22px', left: '-38px' }} size={58} rotate={-10} />
+              <DraggableDaisy style={{ top: '-14px', right: '-20px' }} size={30} rotate={16} />
             </figure>
           </div>
         </div>
@@ -285,7 +288,8 @@ const About = () => {
                   fetchPriority="high"
                   loading="eager"
                 />
-                <DraggableDaisy style={{ top: '4%', right: '3%' }} size={72} rotate={12} className="daisy-journal" />
+                <DraggableDaisy style={{ top: '4%', right: '3%' }} size={60} rotate={12} className="daisy-journal" />
+                <DraggableDaisy style={{ bottom: '6%', left: '2%' }} size={34} rotate={-18} className="daisy-journal-sm" />
                 <div className="journal-page journal-page-left">
                   <h2 className="journal-title">{t(about.leftTitle)}</h2>
                   {about.leftBody[lang].map((paragraph, index) => (

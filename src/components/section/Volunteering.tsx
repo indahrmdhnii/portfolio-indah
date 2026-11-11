@@ -5,6 +5,7 @@ import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useThemeColors } from '../../hooks/useThemeColors';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { volunteering, causeLabel, ui } from '../../data/content';
+import DraggableDaisy from '../fx/DraggableDaisy';
 
 const INITIAL_COUNT = 6;
 // Slight tilts make the cards feel like notes pinned to a board
@@ -23,6 +24,7 @@ const Volunteering = () => {
       background: isDarkMode ? themeColors.background.gradientEnd : `linear-gradient(180deg, ${themeColors.colors.pink[25]} 0%, ${themeColors.colors.white} 40%, ${themeColors.colors.pink[50]} 100%)`,
       transition: 'background 0.3s ease-in-out'
     }}>
+      <DraggableDaisy style={{ top: '5%', right: '8%' }} size={36} rotate={12} />
       <div className="container mx-auto px-6">
         <SectionTitle subtitle={t(ui.volunteering.subtitle)}>{t(ui.volunteering.title)}</SectionTitle>
 
