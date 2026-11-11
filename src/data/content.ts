@@ -807,6 +807,7 @@ export const ui = {
     close: { en: 'Close music player', id: 'Tutup pemutar musik' },
     nowPlaying: { en: 'now playing ♪', id: 'sedang diputar ♪' },
     paused: { en: 'a song I love', id: 'lagu favoritku' },
+    tapToStart: { en: 'tap anywhere to play ♪', id: 'ketuk di mana saja untuk memutar ♪' },
   },
   footer: {
     madeWith: { en: 'Made with', id: 'Dibuat dengan' },

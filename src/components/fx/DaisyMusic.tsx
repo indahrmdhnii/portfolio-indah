@@ -8,6 +8,7 @@ import { music, ui } from '../../data/content';
 interface SpotifyController {
   addListener: (event: string, cb: (e: { data: { isPaused: boolean } }) => void) => void;
   pause: () => void;
+  play: () => void;
   togglePlay: () => void;
 }
 interface SpotifyIFrameAPI {
@@ -30,10 +31,11 @@ const loadSpotifyApi = () =>
 
 /**
  * Floating daisy button that opens a small card with Spotify's compact player
- * (music only, no video). The player loads only after the first tap, the daisy
- * spins while the song plays, and closing the card pauses it.
+ * (music only, no video). With autoStart it opens after the splash and starts the song
+ * (or on the first interaction, since browsers block sound before that). The daisy spins
+ * while the song plays, and closing the card pauses it.
  */
-const DaisyMusic = () => {
+const DaisyMusic = ({ autoStart = false }: { autoStart?: boolean }) => {
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +43,20 @@ const DaisyMusic = () => {
   const [fallback, setFallback] = useState(false);
   const host = useRef<HTMLDivElement>(null);
   const controller = useRef<SpotifyController | null>(null);
+  // True until the song has started once, or the visitor paused/closed it themselves
+  const wantAutoplay = useRef(autoStart);
+
+  // Open the player right after the splash screen and try to start the song
+  useEffect(() => {
+    if (!autoStart) return;
+    setLoaded(true);
+    setOpen(true);
+    // Browsers block sound until the visitor interacts: start on the first tap/click/key anywhere
+    const kick = () => { if (wantAutoplay.current) controller.current?.play(); };
+    const events = ['pointerdown', 'keydown', 'touchstart'] as const;
+    events.forEach((ev) => document.addEventListener(ev, kick, { capture: true }));
+    return () => events.forEach((ev) => document.removeEventListener(ev, kick, { capture: true }));
+  }, [autoStart]);
 
   useEffect(() => {
     if (!loaded || !host.current || controller.current) return;
@@ -49,14 +65,18 @@ const DaisyMusic = () => {
         if (!host.current) return;
         api.createController(host.current, { uri: `spotify:track:${music.spotifyId}`, width: '100%', height: 80 }, (c) => {
           controller.current = c;
-          c.addListener('playback_update', (e) => setPlaying(!e.data.isPaused));
+          c.addListener('playback_update', (e) => {
+            setPlaying(!e.data.isPaused);
+            if (!e.data.isPaused) wantAutoplay.current = false;
+          });
+          c.addListener('ready', () => { if (wantAutoplay.current) c.play(); });
         });
       })
       .catch(() => setFallback(true));
   }, [loaded]);
 
   const toggleOpen = () => {
-    if (open) { controller.current?.pause(); setPlaying(false); setOpen(false); return; }
+    if (open) { wantAutoplay.current = false; controller.current?.pause(); setPlaying(false); setOpen(false); return; }
     setLoaded(true);
     setOpen(true);
   };
@@ -66,7 +86,7 @@ const DaisyMusic = () => {
       {loaded && (
         <div className="daisy-music-card" role="dialog" aria-label={t(ui.music.label)} hidden={!open}>
           <div className="daisy-music-head">
-            <p className="daisy-music-kicker">{playing ? t(ui.music.nowPlaying) : t(ui.music.paused)}</p>
+            <p className="daisy-music-kicker">{playing ? t(ui.music.nowPlaying) : wantAutoplay.current ? t(ui.music.tapToStart) : t(ui.music.paused)}</p>
             <button type="button" className="daisy-music-close" onClick={toggleOpen} aria-label={t(ui.music.close)}><X size={16} /></button>
           </div>
           <div className="daisy-music-player">
