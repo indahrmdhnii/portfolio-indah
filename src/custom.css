@@ -1327,3 +1327,6 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .garden-stem { width: 7px; }
 .leaf { top: 30%; width: 16px; height: 9px; }
 .leaf-r { top: 52%; }
+/* Leaves point upward */
+.leaf-l { transform: rotate(48deg); }
+.leaf-r { transform: rotate(-48deg); }
