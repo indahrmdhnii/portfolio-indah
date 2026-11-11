@@ -730,7 +730,7 @@ export const play = {
   },
   chart: {
     kicker: { en: 'water the daisies', id: 'siram daisy-nya' } as L,
-    title: { en: 'Help the numbers grow', id: 'Bantu angkanya tumbuh' } as L,
+    title: { en: 'Little ideas, big blooms', id: 'Ide kecil, mekar besar' } as L,
     hint: { en: 'Tap the watering can', id: 'Ketuk tekonya' } as L,
     waterLabel: { en: 'Water the daisies', id: 'Siram daisy-nya' } as L,
     win: { en: 'Analyze like a skeptic, build like a believer ♡', id: 'Menganalisis dengan kritis, membangun dengan yakin ♡' } as L,
