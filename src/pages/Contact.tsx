@@ -4,6 +4,7 @@ import { useDarkMode } from '../contexts/DarkModeContext';
 import { useThemeColors } from '../hooks/useThemeColors';
 import { icons3d } from '../assets/icons3d';
 import { stickers } from '../assets';
+import DraggableDaisy from '../components/fx/DraggableDaisy';
 import BackButton from '../components/BackButton';
 import { useLanguage } from '../contexts/LanguageContext';
 import { profile, ui } from '../data/content';
@@ -33,6 +34,7 @@ const Contact = () => {
       </div>
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
+        <DraggableDaisy style={{ top: '-10px', right: '6%' }} size={70} rotate={8} />
         {/* Back Button */}
         <BackButton 
           to="/" 

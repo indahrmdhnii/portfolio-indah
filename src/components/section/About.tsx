@@ -10,6 +10,7 @@ import { useSplashDone } from '../../contexts/SplashContext';
 import { aboutMeJournal, profileIndah, profilePhotos, stickers as stickerImages } from '../../assets';
 import { about, hero } from '../../data/content';
 import { icons3d } from '../../assets/icons3d';
+import DraggableDaisy from '../fx/DraggableDaisy';
 import { certs } from '../../data/certs';
 
 
@@ -233,6 +234,7 @@ const About = () => {
               </div>
               <img className="hero-photo-star" src={icons3d.starGold} alt="" aria-hidden="true" />
               <img className="hero-photo-heart" src={icons3d.heart} alt="" aria-hidden="true" />
+              <DraggableDaisy style={{ bottom: '-22px', left: '-38px' }} size={66} rotate={-10} />
             </figure>
           </div>
         </div>
@@ -283,6 +285,7 @@ const About = () => {
                   fetchPriority="high"
                   loading="eager"
                 />
+                <DraggableDaisy style={{ top: '4%', right: '3%' }} size={72} rotate={12} className="daisy-journal" />
                 <div className="journal-page journal-page-left">
                   <h2 className="journal-title">{t(about.leftTitle)}</h2>
                   {about.leftBody[lang].map((paragraph, index) => (
