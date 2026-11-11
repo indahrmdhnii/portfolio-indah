@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import SectionTitle from '../fx/SectionTitle';
 import DraggableDaisy from '../fx/DraggableDaisy';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -137,7 +136,7 @@ const PlayCorner = () => {
       <DraggableDaisy style={{ top: '8%', left: '6%' }} size={30} rotate={-12} />
       <DraggableDaisy style={{ bottom: '10%', right: '7%' }} size={40} rotate={14} />
       <div className="container mx-auto px-6 relative" style={{ zIndex: 2 }}>
-        <SectionTitle subtitle={t(play.subtitle)}>{t(play.title)}</SectionTitle>
+        <p className="play-intro" data-reveal="up">{t(play.subtitle)}</p>
         <div className="play-grid play-grid-single">
           <DaisyPetals />
         </div>
