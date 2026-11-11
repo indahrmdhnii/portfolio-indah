@@ -1330,3 +1330,8 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 /* Leaves point upward */
 .leaf-l { transform: rotate(48deg); }
 .leaf-r { transform: rotate(-48deg); }
+/* Slimmer stems */
+.garden-stem { width: 4px; border-radius: 3px; }
+.leaf { width: 14px; height: 8px; }
+.leaf-l { right: 3px; }
+.leaf-r { left: 3px; }
