@@ -10,5 +10,6 @@ import medalGold from './medal-gold.svg';
 import medalSilver from './medal-silver.svg';
 import starGold from './star-gold.svg';
 import starPink from './star-pink.svg';
+import wateringCan from './watering-can.svg';
 
-export const icons3d = { book, daisy, briefcase, bulb, certificate, document, heart, medalGold, medalSilver, starGold, starPink };
+export const icons3d = { book, daisy, briefcase, bulb, certificate, document, heart, medalGold, medalSilver, starGold, starPink, wateringCan };

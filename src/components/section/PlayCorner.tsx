@@ -90,18 +90,7 @@ const WaterTheChart = () => {
           disabled={full}
           aria-label={t(play.chart.waterLabel)}
         >
-          <svg viewBox="0 0 120 96" aria-hidden="true">
-            {/* handle */}
-            <path d="M46 30 C 48 8, 92 8, 94 30" fill="none" stroke="#C2607A" strokeWidth="7" strokeLinecap="round" />
-            {/* spout + rose */}
-            <path d="M40 66 L12 34" stroke="#E8909F" strokeWidth="10" strokeLinecap="round" />
-            <ellipse cx="11" cy="31" rx="9" ry="6" transform="rotate(-48 11 31)" fill="#C2607A" />
-            {/* body */}
-            <rect x="36" y="30" width="66" height="54" rx="16" fill="#F2A7B8" />
-            <rect x="36" y="30" width="66" height="20" rx="10" fill="#F7C3CF" />
-            <circle cx="69" cy="62" r="9" fill="#FFF5F7" />
-            <circle cx="69" cy="62" r="4" fill="#F6C453" />
-          </svg>
+          <img src={icons3d.wateringCan} alt="" draggable={false} />
           <span className="drops" aria-hidden="true"><i /><i /><i /></span>
         </button>
         <div className="garden-bars">
