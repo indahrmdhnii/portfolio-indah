@@ -1335,3 +1335,9 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .leaf { width: 14px; height: 8px; }
 .leaf-l { right: 3px; }
 .leaf-r { left: 3px; }
+/* Phones: breathing room on both sides of the nav; no square focus ring after tapping the menu button */
+@media (max-width: 768px) {
+  .navigation .nav-container { padding: 0 16px !important; }
+}
+.mobile-menu-btn, .mobile-menu-btn:focus { outline: none !important; -webkit-tap-highlight-color: transparent; }
+.mobile-menu-btn:focus-visible { outline: none !important; box-shadow: 0 0 0 3px #fff, 0 0 0 5px #C2607A !important; }
