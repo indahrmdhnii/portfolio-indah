@@ -798,7 +798,7 @@ export const ui = {
   recognition: {
     title: { en: 'Recognition', id: 'Penghargaan & Karya' },
     awards: { en: 'Honors & Awards', id: 'Penghargaan' },
-    ip: { en: 'Intellectual Property (HKI)', id: 'Hak Kekayaan Intelektual (HKI)' },
+    ip: { en: 'Intellectual Property', id: 'Hak Kekayaan Intelektual' },
     publications: { en: 'Publications', id: 'Publikasi' },
     ipBadge: { en: 'HKI', id: 'HKI' },
     ipCount: { en: '{n} works protected', id: '{n} karya terlindungi' },
