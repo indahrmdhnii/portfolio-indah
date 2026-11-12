@@ -1387,3 +1387,10 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .mf-row2 .mf-stem { width: 2.5px; }
 .play-dark .meadow::before { background: linear-gradient(180deg, rgba(90, 120, 80, 0), #5E7A55 50%, #546E4C); }
 .play-dark .grass-far path { fill: #8BAA7E; }
+/* realistic stems: thin curved stalk + narrow leaves (svg), clipped by the ground */
+.mf-stem, .mf-row0 .mf-stem, .mf-row1 .mf-stem, .mf-row2 .mf-stem, .mf-row3 .mf-stem { width: 26px; background: none; border-radius: 0; overflow: hidden; position: relative; margin-top: -2px; }
+.mf-stem svg { position: absolute; top: 0; left: 0; display: block; overflow: visible; }
+.mf-stalk { fill: none; stroke: #6DAF5F; stroke-linecap: round; }
+.mf-leaves { fill: #7FBE6C; stroke: #5E9F51; stroke-width: 0.4; }
+.mf-head { margin-bottom: -4px; }
+.play-dark .mf-stalk { stroke: #8CC27C; } .play-dark .mf-leaves { fill: #93C982; stroke: #6FA862; }

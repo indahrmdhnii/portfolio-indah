@@ -67,7 +67,7 @@ const MAX = 4;
 /** tiny seeded random so the meadow looks the same on every visit */
 const seeded = (seed: number) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
 
-type Flower = { x: number; base: number; size: number; min: number; max: number; tilt: number; d: number; z: number; row: number };
+type Flower = { x: number; base: number; size: number; min: number; max: number; tilt: number; d: number; z: number; row: number; bend: number; leafSide: number };
 // back row: small and faded, front row: big and bright, gives the field depth
 const ROWS = [
   { count: 22, size: [10, 14], base: [68, 78], min: [4, 8], max: [20, 30] },
@@ -83,11 +83,31 @@ const FLOWERS: Flower[] = (() => {
     for (let i = 0; i < row.count; i++) {
       const step = 100 / row.count;
       const x = Math.min(97, Math.max(3, (i + 0.5 + (ri % 2 ? 0.35 : 0)) * step + (r() - 0.5) * step * 0.8));
-      list.push({ x, base: between(row.base), size: between(row.size), min: between(row.min), max: between(row.max), tilt: (r() - 0.5) * 26, d: r() * 0.35, z: ri * 10 + 2, row: ri });
+      list.push({ x, base: between(row.base), size: between(row.size), min: between(row.min), max: between(row.max), tilt: (r() - 0.5) * 18, d: r() * 0.35, z: ri * 10 + 2, row: ri, bend: (r() - 0.5) * 8, leafSide: r() > 0.5 ? 1 : -1 });
     }
   });
   return list;
 })();
+
+/** a thin, slightly curved stem with narrow leaves; drawn at full height and
+ *  clipped by the ground, so watering pulls more of it up out of the grass */
+const STEM_W = 26;
+const stemArt = (f: Flower) => {
+  const H = Math.round(f.max) + 4;
+  const c = STEM_W / 2;
+  const x0 = c, x1 = c + f.bend, cx = c - f.bend * 0.8;
+  const at = (t: number) => ({ x: (1 - t) ** 2 * x0 + 2 * (1 - t) * t * cx + t * t * x1, y: t * H });
+  const L = [5, 7, 9, 11][f.row];
+  const leaves = [0.3, 0.52, 0.74].map((t, i) => {
+    const p = at(t);
+    const side = (i % 2 ? -1 : 1) * f.leafSide;
+    const len = L * (1 - i * 0.12);
+    const tipX = p.x + side * len, tipY = p.y - len * 0.85;
+    return `M${p.x.toFixed(1)} ${p.y.toFixed(1)} Q${(p.x + side * len * 0.75).toFixed(1)} ${(p.y - len * 0.1).toFixed(1)} ${tipX.toFixed(1)} ${tipY.toFixed(1)} Q${(p.x + side * len * 0.2).toFixed(1)} ${(p.y - len * 0.55).toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)}Z`;
+  }).join('');
+  return { H, stem: `M${x0} 0 Q${cx.toFixed(1)} ${H / 2} ${x1.toFixed(1)} ${H}`, leaves, w: [1, 1.3, 1.6, 1.9][f.row] };
+};
+const STEMS = FLOWERS.map(stemArt);
 
 /** a strip of grass blades, drawn once */
 const grassPath = (seed: number, count: number, h: number) => {
@@ -151,7 +171,12 @@ const WaterTheChart = () => {
               style={{ left: `${f.x}%`, bottom: f.base, zIndex: f.z, ['--tilt' as string]: `${f.tilt.toFixed(1)}deg`, ['--d' as string]: `${f.d.toFixed(2)}s`, ['--sway' as string]: `${(2.6 + f.d * 4).toFixed(2)}s` }}
             >
               <img className="mf-head" src={icons3d.daisy} alt="" draggable={false} style={{ width: f.size, height: f.size, ['--s' as string]: `${(0.4 + 0.6 * grow).toFixed(2)}` }} />
-              <span className="mf-stem" style={{ height: Math.round(f.min + grow * (f.max - f.min)) }} />
+              <span className="mf-stem" style={{ height: Math.round(f.min + grow * (f.max - f.min)) }}>
+                <svg width={STEM_W} height={STEMS[i].H} viewBox={`0 0 ${STEM_W} ${STEMS[i].H}`}>
+                  <path className="mf-leaves" d={STEMS[i].leaves} />
+                  <path className="mf-stalk" d={STEMS[i].stem} strokeWidth={STEMS[i].w} />
+                </svg>
+              </span>
             </div>
           ))}
         </div>
