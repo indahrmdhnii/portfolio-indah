@@ -733,7 +733,7 @@ export const play = {
     title: { en: 'Little ideas, big blooms', id: 'Ide kecil, mekar besar' } as L,
     hint: { en: 'Tap the watering can', id: 'Ketuk tekonya' } as L,
     waterLabel: { en: 'Water the daisies', id: 'Siram daisy-nya' } as L,
-    win: { en: 'Analyze like a skeptic, build like a believer ♡', id: 'Menganalisis dengan kritis, membangun dengan yakin ♡' } as L,
+    win: { en: 'Daisies bloom anywhere with a little sun, and ideas do too with a little belief ♡', id: 'Daisy bisa mekar di mana saja asal ada sedikit matahari, begitu juga ide asal ada sedikit keyakinan ♡' } as L,
   },
 };
 
