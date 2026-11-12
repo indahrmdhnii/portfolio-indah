@@ -1435,3 +1435,12 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .meadow-garden.is-full .mf-flower .mf-head { animation-duration: 1.6s; }
 .meadow-garden.is-full .mf-bud { transition-duration: 0.9s; }
 .meadow-joy i { animation-delay: calc(1.6s + var(--jd) * 0.4); }
+/* Faster + lighter: ~1s for the whole field, transform/opacity only (no clip-path, blur or per-frame shadows) */
+.meadow-garden.is-full .mf-flower .mf-head { animation: mf-open 0.8s cubic-bezier(0.25, 0.8, 0.3, 1) var(--bd) forwards; }
+@keyframes mf-open { 0% { opacity: 0; transform: scale(0.35) rotate(-8deg); } 30% { opacity: 1; } 100% { opacity: 1; transform: scale(1) rotate(0); } }
+.mf-flower .mf-head { filter: none; will-change: transform, opacity; }
+.meadow-garden.is-full .mf-bud { transition-duration: 0.5s; }
+.mf-row0 { filter: none; opacity: 0.7; }
+/* only the two front rows sway; the back rows stay still to save work */
+.mf-row0, .mf-row1 { animation: none; }
+.meadow-joy i { animation-delay: calc(0.9s + var(--jd) * 0.3); }
