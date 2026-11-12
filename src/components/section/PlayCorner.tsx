@@ -60,16 +60,61 @@ const DaisyPetals = () => {
 };
 
 /* ------------------------------------------------------------------ */
-/* 2. Water the chart: every pour grows the bars, then daisies bloom   */
+/* 2. Water the meadow: every pour grows a whole field of daisies      */
 /* ------------------------------------------------------------------ */
 const MAX = 4;
-const BASE = [26, 40, 56]; // starting bar heights (%)
+
+/** tiny seeded random so the meadow looks the same on every visit */
+const seeded = (seed: number) => () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+
+type Flower = { x: number; base: number; size: number; min: number; max: number; tilt: number; d: number; z: number; row: number };
+// back row: small and faded, front row: big and bright, gives the field depth
+const ROWS = [
+  { count: 22, size: [10, 14], base: [68, 78], min: [4, 8], max: [20, 30] },
+  { count: 16, size: [16, 22], base: [50, 60], min: [6, 12], max: [30, 44] },
+  { count: 13, size: [24, 31], base: [30, 40], min: [8, 14], max: [44, 62] },
+  { count: 9, size: [34, 42], base: [8, 18], min: [10, 18], max: [62, 84] },
+];
+const FLOWERS: Flower[] = (() => {
+  const r = seeded(20260415);
+  const between = ([a, b]: number[]) => a + r() * (b - a);
+  const list: Flower[] = [];
+  ROWS.forEach((row, ri) => {
+    for (let i = 0; i < row.count; i++) {
+      const step = 100 / row.count;
+      const x = Math.min(97, Math.max(3, (i + 0.5 + (ri % 2 ? 0.35 : 0)) * step + (r() - 0.5) * step * 0.8));
+      list.push({ x, base: between(row.base), size: between(row.size), min: between(row.min), max: between(row.max), tilt: (r() - 0.5) * 26, d: r() * 0.35, z: ri * 10 + 2, row: ri });
+    }
+  });
+  return list;
+})();
+
+/** a strip of grass blades, drawn once */
+const grassPath = (seed: number, count: number, h: number) => {
+  const r = seeded(seed);
+  let d = '';
+  for (let i = 0; i < count; i++) {
+    const x = (i / count) * 400 + r() * 6 - 3;
+    const w = 5 + r() * 5;
+    const bh = h * (0.45 + r() * 0.55);
+    const lean = (r() - 0.5) * 16;
+    d += `M${x.toFixed(1)} ${h} Q${(x + lean * 0.3).toFixed(1)} ${(h - bh * 0.6).toFixed(1)} ${(x + w / 2 + lean).toFixed(1)} ${(h - bh).toFixed(1)} Q${(x + w * 0.7 + lean * 0.3).toFixed(1)} ${(h - bh * 0.5).toFixed(1)} ${(x + w).toFixed(1)} ${h}Z`;
+  }
+  return d;
+};
+const GRASS = [
+  { cls: 'grass-far', h: 50, d: grassPath(3, 110, 50) },
+  { cls: 'grass-back', h: 56, d: grassPath(7, 90, 56) },
+  { cls: 'grass-mid', h: 44, d: grassPath(11, 80, 44) },
+  { cls: 'grass-front', h: 32, d: grassPath(19, 70, 32) },
+];
 
 const WaterTheChart = () => {
   const { t } = useLanguage();
   const [level, setLevel] = useState(0);
   const [pouring, setPouring] = useState(false);
   const full = level >= MAX;
+  const grow = level / MAX;
 
   const water = () => {
     if (pouring || full) return;
@@ -82,7 +127,7 @@ const WaterTheChart = () => {
     <div className="play-card" data-reveal="up" style={{ ['--i' as string]: 1 }}>
       <p className="play-kicker">{t(play.chart.kicker)}</p>
       <h3 className="play-title">{t(play.chart.title)}</h3>
-      <div className={`chart-garden ${full ? 'is-full' : ''}`}>
+      <div className={`chart-garden meadow-garden ${full ? 'is-full' : ''}`}>
         <button
           type="button"
           className={`watering-can ${pouring ? 'is-pouring' : ''}`}
@@ -93,27 +138,23 @@ const WaterTheChart = () => {
           <img src={icons3d.wateringCan} alt="" draggable={false} />
           <span className="drops" aria-hidden="true"><i /><i /><i /></span>
         </button>
-        <div className="garden-bars">
-          {BASE.map((b, i) => {
-            const grow = level / MAX;
-            return (
-              <div key={i} className="garden-bar-wrap">
-                <img
-                  className={`garden-head ${full ? 'is-open' : ''}`}
-                  src={icons3d.daisy}
-                  alt=""
-                  aria-hidden="true"
-                  style={{ ['--s' as string]: `${0.55 + 0.45 * grow}`, ['--d' as string]: `${i * 0.12}s` }}
-                />
-                <div className="garden-stem" style={{ height: `calc((100% - 66px) * ${(0.62 * Math.min(100, b + grow * (100 - b)) / 100).toFixed(3)})`, ['--d' as string]: `${i * 0.08}s` }}>
-                  <span className="leaf leaf-l" />
-                  <span className="leaf leaf-r" />
-                </div>
-              </div>
-            );
-          })}
+        <div className="meadow" aria-hidden="true">
+          {GRASS.map((g, gi) => (
+            <svg key={g.cls} className={`grass ${g.cls}`} viewBox={`0 0 400 ${g.h}`} preserveAspectRatio="none" style={{ zIndex: gi * 10 + 1 }}>
+              <path d={g.d} />
+            </svg>
+          ))}
+          {FLOWERS.map((f, i) => (
+            <div
+              key={i}
+              className={`mf mf-row${f.row}`}
+              style={{ left: `${f.x}%`, bottom: f.base, zIndex: f.z, ['--tilt' as string]: `${f.tilt.toFixed(1)}deg`, ['--d' as string]: `${f.d.toFixed(2)}s`, ['--sway' as string]: `${(2.6 + f.d * 4).toFixed(2)}s` }}
+            >
+              <img className="mf-head" src={icons3d.daisy} alt="" draggable={false} style={{ width: f.size, height: f.size, ['--s' as string]: `${(0.4 + 0.6 * grow).toFixed(2)}` }} />
+              <span className="mf-stem" style={{ height: Math.round(f.min + grow * (f.max - f.min)) }} />
+            </div>
+          ))}
         </div>
-        <div className="garden-ground" aria-hidden="true" />
       </div>
       <div className="play-actions">
         {full ? (

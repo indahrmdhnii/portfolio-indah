@@ -1345,3 +1345,45 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .watering-can img { width: 100%; height: 100%; object-fit: contain; display: block; filter: drop-shadow(0 5px 6px rgba(139, 90, 101, 0.22)); pointer-events: none; }
 .watering-can, .watering-can:focus { width: 96px; height: 96px; top: -8px; }
 .drops { left: 12px; top: 34px; }
+
+/* Water the meadow: a real field of daisies with depth */
+.grow-corner .play-grid-single { grid-template-columns: minmax(0, 560px); }
+.meadow-garden { max-width: none; height: 250px; }
+.meadow { position: absolute; inset: 0; overflow: hidden; border-radius: 0 0 20px 20px; }
+.meadow::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(180deg, rgba(214, 238, 196, 0), #DDF0CC 55%, #CFE9BA); }
+.grass { position: absolute; left: -2%; width: 104%; display: block; }
+.grass-back { bottom: 34px; height: 70px; } .grass-back path { fill: #C6E6AE; }
+.grass-mid { bottom: 14px; height: 54px; } .grass-mid path { fill: #A6D791; }
+.grass-front { bottom: -2px; height: 40px; } .grass-front path { fill: #86C673; }
+.mf { position: absolute; display: flex; flex-direction: column; align-items: center; transform: translateX(-50%) rotate(var(--tilt)); transform-origin: 50% 100%; }
+.mf-head { display: block; margin-bottom: -3px; position: relative; z-index: 1; transform: scale(var(--s)); transform-origin: 50% 85%; transition: transform 0.8s cubic-bezier(0.34, 1.6, 0.64, 1); transition-delay: var(--d); filter: drop-shadow(0 2px 2px rgba(110, 90, 80, 0.22)); }
+.mf-stem { display: block; width: 3px; border-radius: 2px; background: linear-gradient(90deg, #8CCB7E, #5FA454); transition: height 0.8s cubic-bezier(0.34, 1.4, 0.64, 1); transition-delay: var(--d); }
+.mf-row0 .mf-stem { width: 2px; }
+.mf-row0 { opacity: 0.8; filter: saturate(0.85); }
+.mf-row2 .mf-stem { width: 3.5px; }
+/* a light breeze, always on; a happy wiggle once it blooms */
+.mf { animation: mf-sway var(--sway) ease-in-out infinite alternate; animation-delay: calc(var(--d) * -6); }
+@keyframes mf-sway { from { transform: translateX(-50%) rotate(calc(var(--tilt) - 3deg)); } to { transform: translateX(-50%) rotate(calc(var(--tilt) + 3deg)); } }
+.meadow-garden.is-full .mf-head { animation: mf-happy 1.8s ease-in-out infinite; animation-delay: calc(0.9s + var(--d)); }
+@keyframes mf-happy { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.meadow-garden .watering-can { z-index: 40; }
+.meadow-garden .drops { z-index: 41; }
+.play-dark .meadow::before { background: linear-gradient(180deg, rgba(90, 120, 80, 0), #5E7A55 55%, #546E4C); }
+.play-dark .grass-back path { fill: #7FA171; } .play-dark .grass-mid path { fill: #6E9461; } .play-dark .grass-front path { fill: #5F8653; }
+@media (max-width: 480px) { .meadow-garden { height: 230px; } .mf-head { max-width: 36px; max-height: 36px; } }
+@media (prefers-reduced-motion: reduce) { .mf, .meadow-garden.is-full .mf-head { animation: none; } .mf-head, .mf-stem { transition: none; } }
+/* meadow polish: soft edges, a far row for depth */
+.meadow { border-radius: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.meadow::before { height: 110px; background: linear-gradient(180deg, rgba(214, 238, 196, 0), #E3F2D5 45%, #CFE9BA); }
+.grass-far { bottom: 58px; height: 50px; } .grass-far path { fill: #D8EDC6; }
+.grass-back { bottom: 36px; height: 56px; }
+.grass-mid { bottom: 16px; height: 44px; }
+.grass-front { height: 32px; }
+.mf-row0 { opacity: 0.7; filter: saturate(0.75) blur(0.3px); }
+.mf-row0 .mf-stem { width: 1.5px; }
+.mf-row1 { opacity: 0.85; }
+.mf-row1 .mf-stem { width: 2px; }
+.mf-row3 .mf-stem { width: 3.5px; }
+.mf-row2 .mf-stem { width: 2.5px; }
+.play-dark .meadow::before { background: linear-gradient(180deg, rgba(90, 120, 80, 0), #5E7A55 50%, #546E4C); }
+.play-dark .grass-far path { fill: #8BAA7E; }
