@@ -170,7 +170,7 @@ const WaterTheChart = () => {
               className={`mf mf-row${f.row}`}
               style={{ left: `${f.x}%`, bottom: f.base, zIndex: f.z, ['--tilt' as string]: `${f.tilt.toFixed(1)}deg`, ['--d' as string]: `${f.d.toFixed(2)}s`, ['--sway' as string]: `${(2.6 + f.d * 4).toFixed(2)}s` }}
             >
-              <span className="mf-flower" style={{ width: f.size, height: f.size, ['--bd' as string]: `${(0.5 + f.x / 100 * 1.1 + f.row * 0.08).toFixed(2)}s` }}>
+              <span className="mf-flower" style={{ width: f.size, height: f.size, ['--bd' as string]: `${(0.3 + f.x / 100 * 0.8 + ((i * 7919) % 97) / 97 * 1.6).toFixed(2)}s` }}>
                 <span className="mf-bud" style={{ ['--s' as string]: `${(0.45 + 0.55 * grow).toFixed(2)}` }} />
                 <img className="mf-head" src={icons3d.daisy} alt="" draggable={false} />
               </span>

@@ -1419,3 +1419,15 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 @media (prefers-reduced-motion: reduce) { .meadow-garden.is-full .mf-flower .mf-head { animation: none; opacity: 1; transform: none; } .meadow-joy { display: none; } }
 .joy-petal { width: 8px; height: 13px; background: linear-gradient(180deg, #FFE4EC, #F7B8C9); }
 .joy-spark { width: 12px; height: 12px; background: #EE8FA9; }
+/* Natural bloom: no spin or glow; petals unfold outward from the yellow centre, slowly, each flower in its own time */
+.meadow-garden.is-full .mf-bud { transition: transform 0.9s ease, opacity 0.9s ease; transition-delay: var(--bd); transform: scale(0.85); }
+.meadow-garden.is-full .mf-flower .mf-head { animation: mf-unfold 2.2s cubic-bezier(0.22, 0.75, 0.25, 1) var(--bd) forwards; }
+@keyframes mf-unfold {
+  0% { opacity: 0; transform: scale(0.45) rotate(-10deg); clip-path: circle(10% at 50% 50%); }
+  15% { opacity: 1; }
+  100% { opacity: 1; transform: scale(1) rotate(0); clip-path: circle(72% at 50% 50%); }
+}
+/* slower, gentler unfolding; petals drift only once most flowers are open */
+.meadow-garden.is-full .mf-flower .mf-head { animation-duration: 3.2s; animation-timing-function: cubic-bezier(0.45, 0.05, 0.3, 1); }
+.meadow-garden.is-full .mf-bud { transition-duration: 1.6s; }
+.meadow-joy i { animation-delay: calc(3s + var(--jd) * 0.5); }
