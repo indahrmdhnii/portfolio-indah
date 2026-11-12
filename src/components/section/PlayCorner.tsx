@@ -103,9 +103,9 @@ const stemArt = (f: Flower) => {
     const side = (i % 2 ? -1 : 1) * f.leafSide;
     const len = L * (1 - i * 0.12);
     const tipX = p.x + side * len, tipY = p.y - len * 0.85;
-    return `M${p.x.toFixed(1)} ${p.y.toFixed(1)} Q${(p.x + side * len * 0.75).toFixed(1)} ${(p.y - len * 0.1).toFixed(1)} ${tipX.toFixed(1)} ${tipY.toFixed(1)} Q${(p.x + side * len * 0.2).toFixed(1)} ${(p.y - len * 0.55).toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)}Z`;
+    return `M${p.x.toFixed(1)} ${p.y.toFixed(1)} Q${(p.x + side * len * 0.62).toFixed(1)} ${(p.y - len * 0.22).toFixed(1)} ${tipX.toFixed(1)} ${tipY.toFixed(1)} Q${(p.x + side * len * 0.38).toFixed(1)} ${(p.y - len * 0.6).toFixed(1)} ${p.x.toFixed(1)} ${p.y.toFixed(1)}Z`;
   }).join('');
-  return { H, stem: `M${x0} 0 Q${cx.toFixed(1)} ${H / 2} ${x1.toFixed(1)} ${H}`, leaves, w: [1, 1.3, 1.6, 1.9][f.row] };
+  return { H, stem: `M${x0} 0 Q${cx.toFixed(1)} ${H / 2} ${x1.toFixed(1)} ${H}`, leaves, w: [0.6, 0.75, 0.9, 1.05][f.row] };
 };
 const STEMS = FLOWERS.map(stemArt);
 
@@ -170,7 +170,10 @@ const WaterTheChart = () => {
               className={`mf mf-row${f.row}`}
               style={{ left: `${f.x}%`, bottom: f.base, zIndex: f.z, ['--tilt' as string]: `${f.tilt.toFixed(1)}deg`, ['--d' as string]: `${f.d.toFixed(2)}s`, ['--sway' as string]: `${(2.6 + f.d * 4).toFixed(2)}s` }}
             >
-              <img className="mf-head" src={icons3d.daisy} alt="" draggable={false} style={{ width: f.size, height: f.size, ['--s' as string]: `${(0.4 + 0.6 * grow).toFixed(2)}` }} />
+              <span className="mf-flower" style={{ width: f.size, height: f.size, ['--bd' as string]: `${(0.5 + f.x / 100 * 1.1 + f.row * 0.08).toFixed(2)}s` }}>
+                <span className="mf-bud" style={{ ['--s' as string]: `${(0.45 + 0.55 * grow).toFixed(2)}` }} />
+                <img className="mf-head" src={icons3d.daisy} alt="" draggable={false} />
+              </span>
               <span className="mf-stem" style={{ height: Math.round(f.min + grow * (f.max - f.min)) }}>
                 <svg width={STEM_W} height={STEMS[i].H} viewBox={`0 0 ${STEM_W} ${STEMS[i].H}`}>
                   <path className="mf-leaves" d={STEMS[i].leaves} />
@@ -180,6 +183,13 @@ const WaterTheChart = () => {
             </div>
           ))}
         </div>
+        {full && (
+          <div className="meadow-joy" aria-hidden="true">
+            {Array.from({ length: 14 }, (_, i) => (
+              <i key={i} className={i % 3 === 2 ? 'joy-spark' : 'joy-petal'} style={{ left: `${6 + ((i * 37) % 88)}%`, ['--jd' as string]: `${(1.4 + (i % 7) * 0.22).toFixed(2)}s`, ['--jx' as string]: `${((i % 2 ? 1 : -1) * (12 + (i * 11) % 30))}px` }} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="play-actions">
         {full ? (
