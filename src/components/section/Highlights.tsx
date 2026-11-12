@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useDarkMode } from '../../contexts/DarkModeContext';
 import { icons3d } from '../../assets/icons3d';
@@ -19,6 +20,19 @@ const Highlights = () => {
   ];
   // Short list: repeat it so one ticker group is always wider than the screen
   const words = [...highlights.ticker[lang], ...highlights.ticker[lang]];
+  // Some in-app browsers (Instagram, older Android WebViews) keep the moving strip laid out with the
+  // fallback font after the handwriting font arrives, so the words overlap. Rebuild it once fonts are in.
+  const [fontKey, setFontKey] = useState(0);
+  useEffect(() => {
+    const fonts = document.fonts;
+    if (!fonts) return;
+    let alive = true;
+    const bump = () => { if (alive) setFontKey((k) => k + 1); };
+    fonts.ready.then(bump);
+    fonts.load("400 1em 'Covered By Your Grace'").then(bump).catch(() => {});
+    fonts.addEventListener?.('loadingdone', bump);
+    return () => { alive = false; fonts.removeEventListener?.('loadingdone', bump); };
+  }, []);
 
   return (
     <section className={`highlights ${isDarkMode ? 'highlights-dark' : ''}`} aria-label="Highlights">
@@ -35,7 +49,7 @@ const Highlights = () => {
       </div>
 
       <div className="ticker" aria-hidden="true">
-        <div className="ticker-track">
+        <div className="ticker-track" key={fontKey}>
           {[0, 1].map((copy) => (
             <div key={copy} className="ticker-group">
               {words.map((word, wordIndex) => (

@@ -1196,7 +1196,8 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .fonts-loading .splash-hi,
 .fonts-loading .splash-name,
 .fonts-loading .splash-skip,
-.fonts-loading .hero-photo .polaroid-caption { visibility: hidden; }
+.fonts-loading .hero-photo .polaroid-caption,
+.fonts-loading .ticker-item { visibility: hidden; }
 
 /* ---------- Play corner ---------- */
 .play-corner { padding: 4rem 0 5rem; background: linear-gradient(180deg, #FFF5F7 0%, #FEF8FA 60%, #FFF5F7 100%); }
@@ -1444,3 +1445,10 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 /* only the two front rows sway; the back rows stay still to save work */
 .mf-row0, .mf-row1 { animation: none; }
 .meadow-joy i { animation-delay: calc(0.9s + var(--jd) * 0.3); }
+/* Skills dome: no scroll-driven zoom; edges fade softly instead of a hard cut */
+.skills-dome { position: relative; z-index: 1; -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 62%, transparent 100%); }
+/* ticker: keep each word in its own box so nothing can slide over its neighbour */
+.ticker-track { will-change: transform; }
+.ticker-item { flex-shrink: 0; }
+/* 3D envelope after "yes! let's work together" */
+.bubble-envelope { display: inline-block; width: 30px; height: 30px; margin-left: 4px; vertical-align: -8px; filter: drop-shadow(0 2px 3px rgba(80, 30, 45, 0.25)); }

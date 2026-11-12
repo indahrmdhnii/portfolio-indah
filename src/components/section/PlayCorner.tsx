@@ -43,7 +43,7 @@ const DaisyPetals = () => {
           />
         ))}
         <span className="petal-center" aria-hidden="true" />
-        {message && <span key={picked.length} className={`petal-bubble ${done ? 'is-final' : ''}`} aria-live="polite">{message}</span>}
+        {message && <span key={picked.length} className={`petal-bubble ${done ? 'is-final' : ''}`} aria-live="polite">{message}{done && <img className="bubble-envelope" src={icons3d.envelope} alt="" draggable={false} />}</span>}
       </div>
       <div className="play-actions">
         {done ? (

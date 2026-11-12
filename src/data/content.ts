@@ -725,7 +725,7 @@ export const play = {
       en: ['hire her?', 'maybe...', 'collab?', 'coffee chat?', 'build together?', 'dream team?', 'partners?', 'almost...'],
       id: ['rekrut dia?', 'mungkin...', 'kolaborasi?', 'ngopi bareng?', 'bangun bareng?', 'dream team?', 'jadi partner?', 'dikit lagi...'],
     },
-    final: { en: "yes! let's work together 💌", id: 'iya! yuk kerja bareng 💌' } as L,
+    final: { en: "yes! let's work together", id: 'iya! yuk kerja bareng' } as L,
     cta: { en: 'Say hi →', id: 'Sapa aku →' } as L,
   },
   chart: {
