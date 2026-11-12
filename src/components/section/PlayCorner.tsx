@@ -63,7 +63,7 @@ const DaisyPetals = () => {
 /* 2. Water the chart: every pour grows the bars, then daisies bloom   */
 /* ------------------------------------------------------------------ */
 const MAX = 4;
-const BASE = [26, 40, 56]; // starting bar heights (%)
+const BASE = [24, 42, 32, 54, 40]; // starting stem heights (%), one per daisy
 
 const WaterTheChart = () => {
   const { t } = useLanguage();
@@ -105,7 +105,7 @@ const WaterTheChart = () => {
                   aria-hidden="true"
                   style={{ ['--s' as string]: `${0.55 + 0.45 * grow}`, ['--d' as string]: `${i * 0.12}s` }}
                 />
-                <div className="garden-stem" style={{ height: `calc((100% - 66px) * ${(0.62 * Math.min(100, b + grow * (100 - b)) / 100).toFixed(3)})`, ['--d' as string]: `${i * 0.08}s` }}>
+                <div className="garden-stem" style={{ height: `calc((100% - 50px) * ${(0.62 * Math.min(100, b + grow * (100 - b)) / 100).toFixed(3)})`, ['--d' as string]: `${i * 0.08}s` }}>
                   <span className="leaf leaf-l" />
                   <span className="leaf leaf-r" />
                 </div>
