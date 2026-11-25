@@ -885,7 +885,11 @@ button:focus-visible, a:focus-visible { outline: 2px solid #C2607A !important; o
 }
 @media (min-width: 768px) { .mascot-peek { width: 130px; top: -78px; right: -30px; } }
 /* AgroSync's mascot sits a little higher over its card */
-@media (min-width: 768px) { .mascot-peek.mascot-agrosync { margin-top: -24px; } }
+@media (min-width: 768px) {
+  .mascot-peek.mascot-agrosync { margin-top: 16px; }
+  /* keep the title, role and description clear of the mascot standing on the card's right edge */
+  .has-mascot .project-card .flex-1.min-w-0 { padding-right: 88px; }
+}
 @keyframes mascot-in { from { opacity: 0; transform: translateY(14px) scale(0.7) rotate(-8deg); } to { opacity: 1; transform: none; } }
 @keyframes mascot-float { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -8px; rotate: 2deg; } }
 .has-mascot .project-card { padding-top: 0.25rem; }
