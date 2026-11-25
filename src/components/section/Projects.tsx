@@ -432,7 +432,7 @@ const Projects = () => {
               {project.mascots && (
                 <img
                   key={mascotPose[project.title] ?? 0}
-                  className="mascot-peek"
+                  className={`mascot-peek mascot-${project.title.toLowerCase()}`}
                   src={project.mascots[mascotPose[project.title] ?? 0].src}
                   alt={t(project.mascots[mascotPose[project.title] ?? 0].alt)}
                   loading="lazy"

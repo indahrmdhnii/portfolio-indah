@@ -884,6 +884,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid #C2607A !important; o
   animation: mascot-in 0.5s cubic-bezier(0.34, 1.6, 0.64, 1), mascot-float 3.6s ease-in-out infinite 0.5s;
 }
 @media (min-width: 768px) { .mascot-peek { width: 130px; top: -78px; right: -30px; } }
+/* AgroSync's mascot sits a little higher over its card */
+@media (min-width: 768px) { .mascot-peek.mascot-agrosync { margin-top: -24px; } }
 @keyframes mascot-in { from { opacity: 0; transform: translateY(14px) scale(0.7) rotate(-8deg); } to { opacity: 1; transform: none; } }
 @keyframes mascot-float { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -8px; rotate: 2deg; } }
 .has-mascot .project-card { padding-top: 0.25rem; }
