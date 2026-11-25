@@ -1452,3 +1452,5 @@ img.hero-photo-heart { width: 50px; height: 50px; }
 .ticker-item { flex-shrink: 0; }
 /* 3D envelope after "yes! let's work together" */
 .bubble-envelope { display: inline-block; width: 30px; height: 30px; margin-left: 4px; vertical-align: -8px; filter: drop-shadow(0 2px 3px rgba(80, 30, 45, 0.25)); }
+/* Single column: the mascot's extra top space must not push the card into the next one */
+@media (max-width: 767px) { .has-mascot.h-full { height: auto; } }

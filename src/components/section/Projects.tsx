@@ -23,7 +23,7 @@ const statusStyle: Record<ProjectStatus, { bg: string; fg: string; dot: string }
 const Projects = () => {
   const { isDarkMode } = useDarkMode();
   const themeColors = useThemeColors();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   // track all the random background stars
   const [stars, setStars] = useState<Array<{ id: number; x: number; y: number; image: string; isDragging: boolean }>>([]);
@@ -489,7 +489,7 @@ const Projects = () => {
                   </div>
                   {project.mascots && (
                     <div className="mascot-strip">
-                      <p className="mascot-strip-label">{t(ui.projects.meetMascot)}</p>
+                      <p className="mascot-strip-label">{t(ui.projects.meetMascot).replace('{name}', project.mascotName ? t(project.mascotName) : (lang === 'id' ? 'maskotnya' : 'the mascot'))}</p>
                       <div className="mascot-strip-row">
                         {project.mascots.map((pose, poseIndex) => (
                           <button

@@ -12,6 +12,9 @@ import boteenGraduate from '../assets/boteen/graduate.webp';
 import boteenBusiness from '../assets/boteen/business.webp';
 import boteenCurious from '../assets/boteen/curious.webp';
 import boteenTrophy from '../assets/boteen/trophy.webp';
+import agrosyncLogo from '../assets/projects/agrosync.webp';
+import agrosyncWalk from '../assets/agrosync/walk.webp';
+import agrosyncWave from '../assets/agrosync/wave.webp';
 /**
  * All portfolio content lives here, in English (en) and Indonesian (id).
  * Edit this file to update the text on the site.
@@ -120,6 +123,8 @@ export interface Project {
   preview?: { shots: string[] };
   /** Optional character poses shown around the card (e.g. Boteen) */
   mascots?: { src: string; alt: L }[];
+  /** Who the mascot is, for the "Meet ..." label (defaults to "the mascot") */
+  mascotName?: L;
 }
 
 export const projects: Project[] = [
@@ -195,12 +200,34 @@ export const projects: Project[] = [
       { en: 'Branding', id: 'Branding' },
       { en: 'HKI', id: 'HKI' },
     ],
+    mascotName: { en: 'Boteen', id: 'Boteen' },
     mascots: [
       { src: boteenGraduate, alt: { en: 'Boteen flying with a diploma', id: 'Boteen terbang membawa ijazah' } },
       { src: boteenIdea, alt: { en: 'Boteen with a bright idea', id: 'Boteen dapat ide' } },
       { src: boteenBusiness, alt: { en: 'Boteen in glasses and a tie', id: 'Boteen berkacamata dan berdasi' } },
       { src: boteenCurious, alt: { en: 'Boteen asking a question', id: 'Boteen sedang bertanya' } },
       { src: boteenTrophy, alt: { en: 'Boteen holding a trophy', id: 'Boteen memegang piala' } },
+    ],
+  },
+  {
+    title: 'AgroSync',
+    monogram: 'As',
+    logo: agrosyncLogo,
+    status: 'live',
+    description: {
+      en: 'An agritech platform that keeps farming data, farmers, and their market in sync, so decisions in the field are backed by clear, up-to-date information.',
+      id: 'Platform agritech yang menyelaraskan data pertanian, petani, dan pasarnya, agar keputusan di lapangan didukung informasi yang jelas dan terkini.',
+    },
+    tags: [
+      { en: 'Agri Tech', id: 'Agri Tech' },
+      { en: 'Web App', id: 'Web App' },
+      { en: 'Product', id: 'Produk' },
+    ],
+    url: 'https://agrosync-one.vercel.app/',
+    urlLabel: 'AgroSync',
+    mascots: [
+      { src: agrosyncWalk, alt: { en: 'AgroSync mascot walking', id: 'Maskot AgroSync berjalan' } },
+      { src: agrosyncWave, alt: { en: 'AgroSync mascot waving', id: 'Maskot AgroSync melambai' } },
     ],
   },
 ];
@@ -759,7 +786,7 @@ export const ui = {
     sneakPeek: { en: 'sneak peek 👀', id: 'sneak peek 👀' },
     previewAlt: { en: 'LinTas app screen', id: 'Tampilan aplikasi LinTas' },
     tapNext: { en: 'tap', id: 'ketuk' },
-    meetMascot: { en: 'Meet Boteen: tap a pose', id: 'Kenalan sama Boteen: pilih gayanya' },
+    meetMascot: { en: 'Meet {name}: tap a pose', id: 'Kenalan sama {name}: pilih gayanya' },
     dragMe: { en: 'drag me!', id: 'geser aku!' },
   },
   experience: {
