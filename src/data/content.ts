@@ -153,13 +153,13 @@ export const projects: Project[] = [
     logo: agrosyncLogo,
     status: 'development',
     description: {
-      en: 'An agritech platform that keeps farming data, farmers, and their market in sync, so decisions in the field are backed by clear, up-to-date information.',
-      id: 'Platform agritech yang menyelaraskan data pertanian, petani, dan pasarnya, agar keputusan di lapangan didukung informasi yang jelas dan terkini.',
+      en: 'A beginner-friendly app that lets you monitor and care for your hydroponic garden right from your phone.',
+      id: 'Aplikasi ramah pemula untuk memantau dan merawat kebun hidroponik kamu langsung dari HP.',
     },
     tags: [
       { en: 'Agri Tech', id: 'Agri Tech' },
-      { en: 'Web App', id: 'Web App' },
-      { en: 'Product', id: 'Produk' },
+      { en: 'Hydroponics', id: 'Hidroponik' },
+      { en: 'Mobile App', id: 'Aplikasi Mobile' },
     ],
     url: 'https://agrosync-one.vercel.app/',
     urlLabel: 'AgroSync',
