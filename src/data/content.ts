@@ -148,6 +148,27 @@ export const projects: Project[] = [
     urlLabel: 'writeen.id',
   },
   {
+    title: 'AgroSync',
+    monogram: 'As',
+    logo: agrosyncLogo,
+    status: 'development',
+    description: {
+      en: 'An agritech platform that keeps farming data, farmers, and their market in sync, so decisions in the field are backed by clear, up-to-date information.',
+      id: 'Platform agritech yang menyelaraskan data pertanian, petani, dan pasarnya, agar keputusan di lapangan didukung informasi yang jelas dan terkini.',
+    },
+    tags: [
+      { en: 'Agri Tech', id: 'Agri Tech' },
+      { en: 'Web App', id: 'Web App' },
+      { en: 'Product', id: 'Produk' },
+    ],
+    url: 'https://agrosync-one.vercel.app/',
+    urlLabel: 'AgroSync',
+    mascots: [
+      { src: agrosyncWalk, alt: { en: 'AgroSync mascot walking', id: 'Maskot AgroSync berjalan' } },
+      { src: agrosyncWave, alt: { en: 'AgroSync mascot waving', id: 'Maskot AgroSync melambai' } },
+    ],
+  },
+  {
     title: 'Wiramuda',
     monogram: 'Wm',
     logo: wiramudaLogo,
@@ -164,23 +185,6 @@ export const projects: Project[] = [
     ],
     url: 'https://linktr.ee/wiramuda.co',
     urlLabel: 'Wiramuda',
-  },
-  {
-    title: 'LinTas',
-    monogram: 'Lt',
-    logo: lintasLogo,
-    status: 'concept',
-    description: {
-      en: 'A mobile platform for public-transport navigation and integration, designed with a human-centered approach.',
-      id: 'Platform navigasi dan integrasi transportasi publik berbasis mobile, dirancang dengan pendekatan human-centered design.',
-    },
-    tags: [
-      { en: 'Mobile', id: 'Mobile' },
-      { en: 'Human-Centered Design', id: 'Human-Centered Design' },
-      { en: 'UI/UX Design', id: 'Desain UI/UX' },
-      { en: 'HKI', id: 'HKI' },
-    ],
-    preview: { shots: [lintasSplash, lintasHome, lintasRoutes, lintasTrip, lintasSearch] },
   },
   {
     title: 'Boteen',
@@ -210,25 +214,21 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: 'AgroSync',
-    monogram: 'As',
-    logo: agrosyncLogo,
-    status: 'live',
+    title: 'LinTas',
+    monogram: 'Lt',
+    logo: lintasLogo,
+    status: 'concept',
     description: {
-      en: 'An agritech platform that keeps farming data, farmers, and their market in sync, so decisions in the field are backed by clear, up-to-date information.',
-      id: 'Platform agritech yang menyelaraskan data pertanian, petani, dan pasarnya, agar keputusan di lapangan didukung informasi yang jelas dan terkini.',
+      en: 'A mobile platform for public-transport navigation and integration, designed with a human-centered approach.',
+      id: 'Platform navigasi dan integrasi transportasi publik berbasis mobile, dirancang dengan pendekatan human-centered design.',
     },
     tags: [
-      { en: 'Agri Tech', id: 'Agri Tech' },
-      { en: 'Web App', id: 'Web App' },
-      { en: 'Product', id: 'Produk' },
+      { en: 'Mobile', id: 'Mobile' },
+      { en: 'Human-Centered Design', id: 'Human-Centered Design' },
+      { en: 'UI/UX Design', id: 'Desain UI/UX' },
+      { en: 'HKI', id: 'HKI' },
     ],
-    url: 'https://agrosync-one.vercel.app/',
-    urlLabel: 'AgroSync',
-    mascots: [
-      { src: agrosyncWalk, alt: { en: 'AgroSync mascot walking', id: 'Maskot AgroSync berjalan' } },
-      { src: agrosyncWave, alt: { en: 'AgroSync mascot waving', id: 'Maskot AgroSync melambai' } },
-    ],
+    preview: { shots: [lintasSplash, lintasHome, lintasRoutes, lintasTrip, lintasSearch] },
   },
 ];
 
